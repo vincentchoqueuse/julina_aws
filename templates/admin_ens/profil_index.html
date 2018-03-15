@@ -1,0 +1,65 @@
+{% extends "admin_ens/detail.html" %}
+
+{%block content %}
+{% include "admin_ens/profil_nav.html" with nav_active="detail" %}
+<div class="tab-content" id="nav-tabContent">
+    <div class="card">
+        <div class="card-header">
+            Profil
+            <div class="pull-right">
+                <a href="/admin_ens/profil/update/" class="link_create_update btn btn-default btn-sm" ><i class="fa fa-pencil" aria-hidden="true"></i> Modification</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row" id="enseignant_profile">
+                <div class="col-sm-3">
+                    {% if object.photo %}
+                    <img class="img-fluid" style="padding: 10px;" src="{{MEDIA_URL}}{{object.photo.url}}" alt="Card image cap">
+                        {% else %}
+                        <i class="fa fa-user-circle fa-5x" aria-hidden="true"></i>
+                        {% endif %}
+                        
+                </div>
+                
+                <div class="col-sm-9">
+                    <ul>
+                        <li>Nom/Prenom: {{object}}
+                        <li><i class="fa fa fa-home" aria-hidden="true"></i> {{object.adresse_rue}}, {{object.adresse_zip}}, {{object.adresse_ville}}</li>
+                        <li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:{{object.email}}"> {{object.email }}</a></li>
+                        <li><i class="fa fa-phone" aria-hidden="true"></i> {{object.telephonemobile}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {% if enseignant.formation_responsable.all.0 %}
+    <div class="card">
+        <div class="card-header">Responsabilité</div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Formation</th>
+                        <th>Intitule</th>
+                        <th>Niveau</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for formation in enseignant.formation_responsable.all %}
+                    <tr>
+                        <td><a href="/admin_ens/raf/formation/{{formation.pk}}/detail/">{{formation.mention_short}}</a></td>
+                        <td>{{formation.mention}}</td>
+                        <td>{{formation.niveau}}</td>
+                    </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endif %}
+    
+</div>
+{%endblock %}
+

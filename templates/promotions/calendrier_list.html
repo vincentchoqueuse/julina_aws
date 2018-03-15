@@ -1,0 +1,24 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Groupe</th>
+            <th class="d-none d-lg-table-cell">Annee</th>
+            <th class="d-none d-lg-table-cell">Semaine</th>
+            <th >Debut</th>
+            <th class="d-none d-md-table-cell">Fin</th>
+            <th >Responsable</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for calendrier_hebdomadaire in object_list %}
+        <tr {% if calendrier_hebdomadaire.responsable.etudiant == etudiant %}class="table-danger"{% endif %}>
+            <td><a href="/promotions/groupe/{{calendrier_hebdomadaire.calendrier.groupe.pk}}/detail/" class="link_detail">{{calendrier_hebdomadaire.calendrier.groupe}}</a></td>
+            <td class="d-none d-lg-table-cell">{{calendrier_hebdomadaire.annee}}</td>
+            <td class="d-none d-lg-table-cell">{{calendrier_hebdomadaire.num_semaine}}</td>
+            <td>{{calendrier_hebdomadaire.get_week.monday}}</td>
+            <td class="d-none d-md-table-cell">{{calendrier_hebdomadaire.get_week.sunday}}</td>
+            <td>{{calendrier_hebdomadaire.responsable}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

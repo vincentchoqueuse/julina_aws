@@ -1,0 +1,21 @@
+<nav class="nav nav-tabs" id="Tab" role="tablist">
+    <a class="nav-item nav-link {% if nav_active == 'detail' %}active{% endif %}" href="../detail/">Détail</a>
+    <div>
+        <a class="nav-link dropdown-toggle {% if nav_active == 'maquette' %}active{% endif %}" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="dropdownMenu1">Maquette</a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <a class="dropdown-item" href="../module/">Gestion des Modules</a>
+            <a class="dropdown-item" href="../parcours/">Gestion des Parcours</a>
+        </div>
+    </div>
+    <div>
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="dropdownMenu2">Promotions</a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            {% for promotion in formation.promotion_set.all %}
+            <a class="dropdown-item" href="/admin_ens/raf/formation/{{formation.pk}}/promotion/{{promotion.pk}}/detail/">{{promotion}}</a>
+            {% endfor %}
+        </div>
+    </div>
+    <a class="nav-item nav-link {% if nav_active == 'consigne' %}active{% endif %}" href="../consigne/">Consignes</a>
+
+
+</nav>

@@ -1,0 +1,31 @@
+{% for projet in object_list %}
+{% if projet.active %}
+<tr>
+    <td>{{projet.intitule}}</td>
+    <td>{{projet.promotion}}</td>
+    <td>{{projet.salle}}</td>
+    <td><span class="badge badge-info">En cours</span></td>
+    <td>
+        <a href="/projets/projet_tuteure/ens/{{projet.pk}}/update/" class="link_create_update btn btn-default btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+        <a href="/projets/projet_tuteure/ens/{{projet.pk}}/delete/" class="link_delete btn btn-default btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
+        
+    </td>
+</tr>
+{% else %}
+<tr>
+    <td><a class="link_detail" href="/projets/projet_tuteure/{{projet.pk}}/detail/">{{projet.intitule}}</td>
+    <td>{{projet.promotion}}</td>
+    <td>{{projet.salle}}</td>
+    <td>
+        {% if projet.actif %}
+            <span class="badge badge-info">En cours</span></td>
+        {% else %}
+            <span class="badge badge-info">Proposition</span></td>
+        {% endif %}
+    </td>
+    <td>
+        <a href="/projets/projet_tuteure/ens/{{projet.pk}}/update/" class="link_create_update btn btn-default btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+    </td>
+</tr>
+{% endif %}
+{% endfor %}

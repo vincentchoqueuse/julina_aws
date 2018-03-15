@@ -1,0 +1,39 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Auteur</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for rapport_tuteur_formation in object.rapport_tuteur_formation_set.all %}
+        <tr>
+            <td><a class="link_detail" href="/entreprises/rapport_tuteur_formation/{{rapport_tuteur_formation.pk}}/detail/">Rapport Visite</a></td>
+            <td><span class="badge badge-info">Tuteur Formation</span></td>
+            <td>{{rapport_tuteur_formation.date_visite|date}}</td>
+            <td></td>
+        </tr>
+        {% endfor %}
+        
+        {% if object.fiche_liaison %}
+        <tr>
+            <td><a class="link_detail" href="/entreprises/fiche_liaison/{{object.fiche_liaison.pk}}/detail/" >Fiche Liaison</a></td>
+            <td><span class="badge badge-info">Alternant</span></td>
+            <td>{{object.fiche_liaison.date_modification|date}}</td>
+            <td><a class="link_create_update btn btn-default btn-sm"  href="../fiche_liaison/{{object.fiche_liaison.pk}}/update/" ><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+        </tr>
+        {% else %}
+        <tr>
+            <td>Fiche Manquante</td>
+            <td></td>
+            <td></td>
+            <td>
+                <a class="link_create_update btn btn-default btn-sm"  href="/admin_etu/contrat/{{object.pk}}/fiche_liaison/create/" ><i class="fa fa-plus" aria-hidden="true"></i> Ajouter</a>
+                
+            </td>
+        </tr>
+        {% endif %}
+    </tbody>
+</table>

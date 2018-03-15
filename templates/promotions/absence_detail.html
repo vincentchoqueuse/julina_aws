@@ -1,0 +1,33 @@
+<h5>Etudiant</h5>
+<dl class='row'>
+    <dt class='col-sm-3'>Etudiant</dt>
+    <dd class='col-sm-9'>{{object.affectation_etudiant.etudiant}}</dd>
+</dl>
+<dl class='row'>
+    <dt class='col-sm-3'>Promotion</dt>
+    <dd class='col-sm-9'>{{object.affectation_etudiant.promotion}}</dd>
+</dl>
+<dl class='row'>
+    <dt class='col-sm-3'>Justification</dt>
+    <dd class='col-sm-9'>{{object.get_statut_display}}</dd>
+</dl>
+<h5>Commentaires</h5>
+<dl class='row'>
+    <dt class='col-sm-3'>Responsable de Formation</dt>
+    <dd class='col-sm-9'>{{object.commentaire_raf}}</dd>
+</dl>
+<dl class='row'>
+    <dt class='col-sm-3'>Enseignant</dt>
+    <dd class='col-sm-9'>{{object.commentaire_ens}}</dd>
+</dl>
+<dl class='row'>
+    <dt class='col-sm-3'>Administration</dt>
+    <dd class='col-sm-9'>{{object.commentaire_adm}}</dd>
+</dl>
+{% if object.justification %}
+<dl class='row'>
+    <dt class='col-sm-3'>Document</dt>
+    <dd class='col-sm-9'><a href="{{object.justification.url}}">Justificatif</a></dd>
+</dl>
+{% endif %}
+

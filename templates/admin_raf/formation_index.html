@@ -1,0 +1,103 @@
+{% extends "admin_raf/base.html" %}
+{% load generic %}
+
+{%block content %}
+{% include 'admin_raf/formation_nav.html' with nav_active="detail" %}
+<div class="tab-content" id="nav-tabContent">
+    <div class="card">
+        <div class="card-header">
+            Promotions
+            <div class="pull-right">
+                <a class="link_create_update btn btn-default btn-sm"  href="../promotion/create/" ><i class="fa fa-plus" aria-hidden="true"></i> Ajouter</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div id="promotion_table">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Groupes</th>
+                            <th>Nb Etudiants</th>
+                            <th class="d-none d-lg-table-cell">Statut</th>
+                            <th class="d-none d-lg-table-cell">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for promotion in object.promotion_set.all %}
+                        <tr>
+                            <td><a href="../promotion/{{promotion.pk}}/detail/">{{promotion.formation}} {{promotion.annee}}</td>
+                            <td>{{promotion.groupe_set.all|join:", "}}</td>
+                            <td>{{promotion.etudiants.all|length}}</td>
+                            <td class="d-none d-lg-table-cell">
+                                {% if promotion.active %}
+                                <span class="badge badge-info">Actif</span></td>
+                            {% else %}
+                            <span class="badge badge-info">Inactif</span></td>
+                            {% endif %}
+                            
+                            </td>
+                            
+                            <td class="d-none d-lg-table-cell">
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Actions
+                                    </button>
+                                    <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                                        <h6 class="dropdown-header">Promotion</h6>
+                                        <a href="../promotion/{{promotion.pk}}/update/" class="link_create_update dropdown-item">Modification</a>
+                                        <a href="../promotion/{{promotion.pk}}/delete/" class="link_delete dropdown-item">Suppression</a>
+                                        
+                                        <h6 class="dropdown-header">Import</h6>
+                                        <a class="dropdown-item link_create_update" href="../promotion/{{promotion.pk}}/etudiant/import/">Inscription</a>
+                                        <a class="dropdown-item link_create_update" href="../promotion/{{promotion.pk}}/bulletin/import/">Notes Scodoc</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            Réseaux Sociaux
+            <div class="pull-right">
+                <a class="link_create_update btn btn-default btn-sm"  href="../reseau/update/" ><i class="fa fa-pencil" aria-hidden="true"></i> Modifier</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div id="reseau_profile">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Objectif</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if object.linkedin %}
+                        <tr>
+                            <td><a href="{{object.linkedin}}" target="_blank">Linkedin</a></td>
+                            <td>Réseau professionnel des anciens</td>
+                            <td><a class="btn btn-default btn-sm" href="{{object.linkedin}}" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></td>
+                        </tr>
+                        {% endif %}
+                        {% if object.facebook %}
+                        <tr>
+                            <td><a href="{{object.facebook}}" target="_blank">Facebook</a></td>
+                            <td>Diffusion d'informations pour la promotion en cours.</td>
+                            <td><a class="btn btn-default btn-sm" href="{{object.facebook}}" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock%}
+

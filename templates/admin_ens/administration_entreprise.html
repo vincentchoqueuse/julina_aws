@@ -1,0 +1,20 @@
+{% extends "entreprises/entreprise_list.html" %}
+
+{% block sidebar %}
+{% include 'admin_ens/sidebar.html' %}
+{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="/admin_ens/profile/">Home</a></li>
+<li class="breadcrumb-item active">Entreprises</li>
+{% endblock %}
+
+{% block nav %}
+<nav class="nav nav-tabs" >
+    <a class="nav-item nav-link active" href="/admin_ens/administration/entreprise/" >Entreprises</a>
+    <a class="nav-item nav-link" href="/admin_ens/administration/entreprise/carte/" >Carte</a>
+</nav>
+{% endblock %}
+
+
+

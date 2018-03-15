@@ -1,0 +1,19 @@
+{% extends "formations/admin.html" %}
+
+{% load bootstrap4 %}
+
+{% block menu_administration %}active{% endblock %}
+{% block sidebar_departements %}active{%endblock%}
+
+{%block main_content %}
+<h2>Suppression Enseignant</h2>
+
+Souhaitez-vous supprimer l'enseignant{{ object }} ?
+<form action="" method="post" >
+    {% csrf_token %}
+    <input class="btn btn-secondary"
+    type="button" value="Annuler"
+    onclick="window.history.go(-1);"/>
+    <input class="btn btn-danger" type="submit" value="Confirmer"/>
+</form>
+{% endblock %}

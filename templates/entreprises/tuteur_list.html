@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+{% block nav %}
+{% endblock %}
+
+<div class="tab-content" id="nav-tabContent">
+    <div class="card">
+        <div class="card-header">Liste des Tuteurs ({{page_obj.paginator.count}} résultats)
+            <div class="pull-right">
+                <a  class="link_create_update btn btn-default btn-sm" href="/entreprises/tuteur/create/"><i class="fa fa-plus" aria-hidden="true"></i> Ajouter </a>
+                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal2"><i class="fa fa-filter" aria-hidden="true"></i> Filtre </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th >Nom / Prénom</th>
+                        <th >Entreprise</th>
+                        <th >Poste</th>
+                        <th >email</th>
+                        <th> Téléphone</th>
+                        <th >Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tuteur in object_list %}
+                    <tr>
+                        <td><a href="/entreprises/tuteur/{{tuteur.pk}}/detail/" class='link_detail'>{{ tuteur.nom }} {{ tuteur.prenom }}</a></td>
+                        <td>{{tuteur.entreprises.all|join:","}}</td>
+                        <td>{{ tuteur.poste}}</td>
+                        <td><a href="mailto:{{ tuteur.email}}">{{tuteur.email}}</a></td>
+                        <td>{{ tuteur.telephonemobile}}</td>
+                        <td>
+                            <a href="/entreprises/tuteur/{{tuteur.pk}}/update/" class='link_create_update btn btn-default btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a>
+                            <a href="/entreprises/tuteur/{{tuteur.pk}}/delete/" class='link_delete btn btn-default btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div >
+                {% if is_paginated %}
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        {% if page_obj.has_previous %}
+                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}&nom={{request.GET.nom}}&entreprise={{request.GET.entreprise}}">&laquo;</a></li>
+                        {% else %}
+                        <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                        {% endif %}
+                        {% for i in paginator.page_range %}
+                        {% if page_obj.number == i %}
+                        <li class="page-item active"><span class="page-link">{{ i }} <span class="sr-only">(current)</span></span></li>
+                        {% else %}
+                        <li><a class="page-link" href="?page={{i}}&nom={{request.GET.nom}}&entreprise={{request.GET.entreprise}}">{{ i }}</a></li>
+                        {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}&nom={{request.GET.nom}}&entreprise={{request.GET.entreprise}}">&raquo;</a></li>
+                        {% else %}
+                        <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block modal %}
+{{ block.super }}
+<div id="modal2" class="modal fade" style="overflow: scroll;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" >
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal_title">Filtrage des Résultats</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="" method="get">
+                <div class="modal-body" id="modal_content">
+                    {% bootstrap_form form %}
+                </div>
+                <div class="modal-footer">
+                    <a href="{{request.path}}" class="btn btn-default" >Supprimer Filtre</a>
+                    <button type="submit" class="btn btn-primary" >Filtrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

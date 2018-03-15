@@ -1,0 +1,50 @@
+{% load generic %}
+<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+    
+    <li class="nav-header d-none d-lg-block">Menu Etudiant</li>
+    
+    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Profil">
+        <a class="nav-link {% if '/admin_etu/profil/' in request.path %}active{% endif %}" href="/admin_etu/profil/">
+            <i class="fa fa-fw fa-cog"></i>
+            <span class="nav-link-text">Profil</span>
+        </a>
+    </li>
+    
+    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="promotion">
+        <a class="nav-link nav-link-collapse {% if not 'admin_etu/affectation_etudiant/' in request.path %}collapsed{%endif%}" data-toggle="collapse" href="#collapsepromotion" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-users"></i>
+            <span class="nav-link-text">Promotions</span>
+        </a>
+        <ul class="sidenav-second-level collapse {% if 'admin_etu/affectation_etudiant/' in request.path %}show{%endif%}" id="collapsepromotion">
+            {% for affectation in request.user.etudiant.get_affectation_list.all %}
+            <li><a href="/admin_etu/affectation_etudiant/{{affectation.pk}}/detail/" class="nav-link {% test_url_active request 'affectation_etudiant' affectation.pk %}">{{affectation.promotion}}</a></li>
+            {% endfor %}
+        </ul>
+    </li>
+    
+    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="promotion">
+        <a class="nav-link nav-link-collapse {% if not 'admin_etu/contrat/' in request.path %}collapsed{%endif%}" data-toggle="collapse" href="#collapsecontrat" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-users"></i>
+            <span class="nav-link-text">Contrats</span>
+        </a>
+        <ul class="sidenav-second-level collapse {% if 'admin_etu/contrat/' in request.path %}show{%endif%}" id="collapsecontrat">
+            {% for contrat in request.user.etudiant.get_contrat_list.all %}
+            <li><a href="/admin_etu/contrat/{{contrat.pk}}/detail/" class="nav-link {% test_url_active request 'contrat' contrat.pk %}">{{contrat.entreprise}} </a></li>
+            {% endfor %}
+        </ul>
+    </li>
+    
+    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="promotion">
+        <a class="nav-link nav-link-collapse {% if not 'admin_etu/projet_tuteure/' in request.path %}collapsed{%endif%}" data-toggle="collapse" href="#collapseprojet" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-users"></i>
+            <span class="nav-link-text">Projets Tuteurés</span>
+        </a>
+        <ul class="sidenav-second-level collapse {% if 'admin_etu/projet_tuteure/' in request.path %}show{%endif%}" id="collapseprojet">
+            {% for projet_tuteure in request.user.etudiant.get_projet_tuteure_list.all %}
+            <li><a href="/admin_etu/projet_tuteure/{{projet_tuteure.pk}}/detail/" class="nav-link {% test_url_active request 'projet_tuteure' projet_tuteure.pk %}">Projet {{projet_tuteure.promotion}} </a></li>
+            {% endfor %}
+        </ul>
+    </li>
+    
+  
+</ul>

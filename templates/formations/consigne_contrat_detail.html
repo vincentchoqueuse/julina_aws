@@ -1,0 +1,12 @@
+{% load generic %}
+
+{{object.consigne_contrat|as_markdown}}
+
+{% if object.grille_contrat.file %}
+<h5>Fichier</h5>
+<ul>
+    <li>
+        <a href="{{object.grille_contrat.file.url}}">{{object.grille_contrat.file}}</a>
+    </li>
+</ul>
+{% endif %}

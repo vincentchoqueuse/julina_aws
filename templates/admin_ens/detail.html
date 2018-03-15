@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load generic %}
+
+{% block sidebar %}
+{% include 'admin_ens/sidebar.html' %}
+{% endblock %}
+
+{% block breadcrumb %}
+{% include breadcrumb_template %}
+{% endblock %}
+
+
+{%block content %}
+{% include nav_template %}
+<div class="tab-content" id="nav-tabContent">
+    <div class="card">
+        <div class="card-header">{{title}}
+        </div>
+        <div class="card-body">
+            {% include detail_template %}
+        </div>
+    </div>
+</div>
+{% endblock %}

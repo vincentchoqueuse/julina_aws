@@ -1,0 +1,34 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th >Type</th>
+            <th class="d-none d-lg-table-cell">Entreprise</th>
+            <th>Etudiant</th>
+            <th class="d-none d-md-table-cell">Tuteur IUT</th>
+            <th class="d-none d-lg-table-cell">Tuteur Entreprise</th>
+            <th class="d-none d-lg-table-cell">Ville</th>
+            <th class="d-none d-lg-table-cell">CQPM</th>
+        </tr>
+    </thead>
+    <tbody id="contrat_table">
+        
+        {% for contrat in object_list %}
+        <tr>
+            <td>
+                {% if base_url %}
+                    <a href="/{{base_url}}/contrat/{{contrat.pk}}/detail/" >{{contrat.get_type_display}}</a>
+                {% else %}
+                    <a class='link_detail' href="/entreprises/contrat/{{contrat.pk}}/detail/" >{{contrat.get_type_display}}</a>
+                {% endif %}
+            </td>
+            <td>{{contrat.entreprise|truncatechars:30}}</td>
+            
+            <td>{{contrat.affectation.etudiant}}</td>
+            <td class="d-none d-md-table-cell">{{contrat.tuteur_formation}}</td>
+            <td class="d-none d-lg-table-cell">{{contrat.tuteur_entreprise}}</th>
+            <td class="d-none d-lg-table-cell">{{contrat.entreprise.adresse_ville}}</td>
+            <td class="d-none d-lg-table-cell">{{contrat.cqpm.numero}}</th>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

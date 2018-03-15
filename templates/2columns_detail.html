@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% load generic %}
+
+
+{%block subtitle %}{{subtitle}}{% endblock %}
+
+{%block sidebar %}
+{% include sidebar_menu_url %}
+{%endblock %}
+
+
+{%block content %}
+
+{% if is_markdown == True %}
+    {{object|as_markdown_description:list_display}}
+{% else %}
+    {{object|as_description:list_display}}
+{% endif %}
+{% endblock %}

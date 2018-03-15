@@ -1,0 +1,79 @@
+{% load generic %}
+<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+    
+    <li class="nav-header d-none d-lg-block">Menu Enseignant</li>
+    
+    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Profil">
+        <a class="nav-link {% if '/admin_ens/profil/' in request.path %}active{% endif %}" href="/admin_ens/profil/">
+            <i class="fa fa-fw fa-cog"></i>
+            <span class="nav-link-text">Profil</span>
+        </a>
+    </li>
+    
+     {% if request.user.enseignant.formation_responsable.all.0 %}
+     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="formation">
+         <a class="nav-link nav-link-collapse {% if not '/adm/' in request.path %}collapsed{%endif%}" data-toggle="collapse" href="#collapseadministration" data-parent="#exampleAccordion">
+             <i class="fa fa-database" aria-hidden="true"></i>
+             <span class="nav-link-text">Administration</span>
+         </a>
+         <ul class="sidenav-second-level collapse {% if '/adm/' in request.path %}show{%endif%}" id="collapseadministration">
+             <li><a href="/admin_ens/adm/entreprise/" class="nav-link {% if '/adm/' in request.path %}active{%endif%}">Base de données</a></li>
+
+         </ul>
+     </li>
+     
+     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="formation">
+         <a class="nav-link nav-link-collapse {% if not 'admin_ens/raf/' in request.path %}collapsed{%endif%}" data-toggle="collapse" href="#collapseformation" data-parent="#exampleAccordion">
+             <i class="fa fa-university" aria-hidden="true"></i>
+             <span class="nav-link-text">Responsabilités</span>
+         </a>
+         <ul class="sidenav-second-level collapse {% if 'admin_ens/raf/' in request.path %}show{%endif%}" id="collapseformation">
+              {% for formation in request.user.enseignant.formation_responsable.all %}
+              {% if formation.active %}
+             <li><a href="/admin_ens/raf/formation/{{formation.pk}}/detail/" class="nav-link {% test_url_active request 'formation' formation.pk %}">{{formation.mention_short}}</a></li>
+             {% endif %}
+             {% endfor %}
+         </ul>
+    </li>
+     {% endif %}
+    
+    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="promotion">
+        <a class="nav-link nav-link-collapse {% if 'admin_ens/promotion/' in request.path %}collapsed{%endif%}" data-toggle="collapse" href="#collapsepromotion" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-users"></i>
+            <span class="nav-link-text">Promotions</span>
+        </a>
+        <ul class="sidenav-second-level collapse {% if 'admin_ens/promotion/' in request.path %}show{%endif%}" id="collapsepromotion">
+            {% for promotion in request.user.enseignant.get_active_promotion_list.all %}
+            <li><a href="/admin_ens/promotion/{{promotion.pk}}/detail/" class="nav-link {% test_url_active request 'admin_ens/promotion' promotion.pk %}">{{promotion}} </a></li>
+            {% endfor %}
+        </ul>
+    </li>
+
+    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="contrat">
+        <a class="nav-link nav-link-collapse {% if not menu == 'contrat' %}collapsed{%endif%}" data-toggle="collapse" href="#collapsecontrat" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-briefcase"></i>
+            <span class="nav-link-text">Contrats</span>
+        </a>
+
+        <ul class="sidenav-second-level collapse {% if menu == 'contrat' %}show{%endif%}" id="collapsecontrat">
+            {% for contrat in request.user.enseignant.get_active_contrat_list.all %}
+            <li><a href="/admin_ens/contrat/{{contrat.pk}}/detail/" class="nav-link {% test_url_active request 'contrat' contrat.pk %}">{{contrat.affectation.etudiant}} {{ 'contrat'|stringformat:contrat.pk|stringformat:"i" }}</a></li>
+            
+            {% endfor %}
+            
+        </ul>
+    </li>
+
+    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="projet">
+        <a class="nav-link nav-link-collapse {% if not menu == 'projet_tuteure' %}collapsed{%endif%}" data-toggle="collapse" href="#collapseprojet" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-wrench"></i>
+            <span class="nav-link-text">Projets Tuteures</span>
+        </a>
+        <ul class="sidenav-second-level collapse {% if menu == 'projet_tuteure' %}show{%endif%}" id="collapseprojet">
+            {% for projet_tuteure in request.user.enseignant.get_active_projet_tuteure_list.all %}
+            <li><a href="/admin_ens/projet_tuteure/{{projet_tuteure.pk}}/detail/" class="nav-link {% test_url_active request 'projet_tuteure' projet_tuteure.pk %}">{{projet_tuteure.intitule}}</a></li>
+            {% endfor %}
+        </ul>
+    </li>
+</ul>
+

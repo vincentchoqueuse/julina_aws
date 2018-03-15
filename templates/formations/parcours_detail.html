@@ -1,0 +1,40 @@
+<dl class='row'>
+    <dt class='col-sm-3'>Nom Short</dt>
+    <dd class='col-sm-9'>{{object.nom_short}}</dd>
+</dl>
+
+<dl class='row'>
+    <dt class='col-sm-3'>Nom</dt>
+    <dd class='col-sm-9'>{{object.nom}}</dd>
+</dl>
+
+<h3>Liste des UEs </h3>
+
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Numero</th>
+            <th>Intitule</th>
+            <th>Coefficient</th>
+            <th>Nb Heures</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ue in object.ues.all %}
+        <tr class="ue">
+            <td>UE{{ue.numero}}</td>
+            <td>{{ue.intitule}}</td>
+            <td>{{ue.coefficient}}</td>
+            <td>{{ue.nb_heures}}</td>
+        </tr>
+            {% for module in ue.module_set.all %}
+            <tr>
+                <td>{{module.code_scodoc}}</td>
+                <td>{{module.intitule}}</td>
+                <td>{{module.coefficient}}</td>
+                <td>{{module.nb_heures}}</td>
+            </tr>
+            {% endfor %}
+        {% endfor %}
+    </tbody>
+</table>

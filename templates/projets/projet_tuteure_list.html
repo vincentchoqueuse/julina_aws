@@ -1,0 +1,51 @@
+<table class="table">
+    <thead>
+        <tr >
+            <th>Intitule</th>
+            <th>Enseignant</th>
+            <th>Etudiants</th>
+            <th class="d-none d-md-table-cell">Salle</th>
+            <th class="d-none d-md-table-cell">Statut</th>
+            {% if can_update %}
+            <th class="d-none d-md-table-cell">Action</th>
+            {% endif %}
+        </tr>
+    </thead>
+    <tbody >
+        {% for projet in object_list %}
+        <tr>
+            <td>
+                <a class="link_detail" href="/projets/projet_tuteure/{{projet.pk}}/detail/">{{projet.intitule|truncatechars:20}}</a>
+            </td>
+            <td>{{projet.enseignant}}</td>
+            <td>
+                <ul>
+                {% for affectation in projet.affectation.all %}
+                    <li>{{affectation}}</li>
+                {% endfor %}
+                </ul>
+            </td>
+            <td class="d-none d-md-table-cell">{{projet.salle}}</td>
+            <td class="d-none d-md-table-cell">
+            {% if projet.actif %}
+                <span class="badge badge-info">Actif</span>
+            {% else %}
+                <span class="badge badge-info">Proposition</span>
+            {% endif %}
+            </td>
+            {% if can_update %}
+            <td>
+                <a href="./{{projet.pk}}/update/" class='link_create_update btn btn-default btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a>
+                {% if can_delete %}
+                <a href="./{{projet.pk}}/delete/" class='link_delete btn btn-default btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a>
+                {% endif %}
+            </td>
+            {% endif %}
+            
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+

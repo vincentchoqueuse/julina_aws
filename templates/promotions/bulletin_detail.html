@@ -1,0 +1,30 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th >Code</th>
+            <th >Intitule</th>
+            <th >{{object.moyenne|floatformat:2}}/20</th>
+        </tr>
+    </thead>
+    {% for ue in object.affectation.parcours.ues.all %}
+    <tr>
+        <th>UE {{ue.numero}} </th>
+        <th>{{ue.intitule}} </th>
+        <th></th>
+    </tr>
+    {% for module in ue.module_set.all %}
+    <tr>
+        <td>
+            <a href="/formations/module/{{module.pk}}/detail/" class="link_detail">{{module.code_scodoc}} </a>
+        </td>
+        <td>{{module.intitule}} </td>
+        <td>
+            {% for note in object.note_set.all%}
+            {% if note.module.pk == module.pk %}{{note.moyenne}}{%endif %}
+            {% endfor %}
+        </td>
+    </tr>
+    {% endfor %}
+    {% endfor %}
+    </tbody>
+</table>

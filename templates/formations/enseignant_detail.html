@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-sm-3">
+        {% if object.photo %}
+        <img class="img-fluid" style="padding: 10px;" src="{{MEDIA_URL}}{{object.photo.url}}" alt="Card image cap">
+            {% else %}
+            <i class="fa fa-user-circle fa-5x" aria-hidden="true"></i>
+            {% endif %}
+            
+            </div>
+    
+    <div class="col-sm-9">
+        <ul>
+            <li>Nom/Prenom: {{object}}
+                <li>Date de Naissance: {{object.date_naissance}} </li>
+                <li><i class="fa fa fa-home" aria-hidden="true"></i> {{object.domicile}}, {{object.villedomicile}}, {{object.codepostaldomicile}}</li>
+                <li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:{{object.email_perso }}"> {{object.email}}</a></li>
+                <li><i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:{{object.telephonemobile}}">{{object.telephonemobile}}</a></li>
+                </ul>
+        
+    </div>
+</div>
+
+<div class="information">
+<div class="pull-right"><a href="#" class="button_show">(show all)</a></div>
+<h5>Affectation Modules</h5>
+{% for affectation in object.affectation_enseignant_set.all %}
+<dl class="row {% if affectation.groupe.promotion.active %}active{% else %}inactive{% endif %}">
+    <dt class="col-sm-2">{{affectation.groupe.promotion.annee}}</dt>
+    <dd class="col-sm-10">{{affectation.module}} ({{affectation.groupe}})</dd>
+</dl>
+{% endfor %}
+</div>
+
+
+<div class="information">
+    <div class="pull-right"><a href="#" class="button_show">(show all)</a></div>
+    <h5>Contrats</h5>
+    {% for contrat in object.contrat_set.all %}
+    <dl class="row {% if contrat.affectation.groupe.promotion.active %}active{% else %}inactive{% endif %}">
+        <dt class="col-sm-2">{{contrat.entreprise}}</dt>
+        <dd class="col-sm-10">Etudiant: {{contrat.affectation}}</dd>
+    </dl>
+    {% endfor %}
+</div>

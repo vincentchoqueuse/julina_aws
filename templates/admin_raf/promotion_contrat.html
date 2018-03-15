@@ -1,0 +1,69 @@
+{% extends "admin_raf/list.html" %}
+{% load generic %}
+
+{%block javascript%}
+<script>
+    {% include 'entreprises/contrat_list_map.js' %}
+    </script>
+{%endblock%}
+
+
+{%block content %}
+{% include 'admin_raf/promotion_nav.html' with nav_active="contrat" %}
+<div class="tab-content" id="nav-tabContent">
+    <div class="card">
+        <div class="card-header">
+            Contrats ({{object_list|length}} résultats)
+            <div class="pull-right">
+                <a href="/admin_ens/promotion/{{promotion.pk}}/import_contrat/" class="btn btn-default btn-sm link_create_update" ><i class="fa fa-upload" aria-hidden="true"></i> Import</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div id="list_display" class="show">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Entreprise</th>
+                            <th>Etudiant</th>
+                            <th class="d-none d-lg-table-cell">Tuteur Formation</th>
+                            <th>Tuteur Entreprise</th>
+                            <th class="d-none d-lg-table-cell">CQPM</th>
+                            <th class="d-none d-lg-table-cell">Fiche</th>
+                            <th class="d-none d-lg-table-cell">Rapport</th>
+                            <th class="d-none d-lg-table-cell">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {% for contrat in object_list %}
+                        <tr >
+                            <td><a href="/entreprises/contrat/{{contrat.pk}}/detail/" class='link_detail'>{{contrat.entreprise|truncatechars:30}}</a></td>
+                            <td>{{contrat.affectation.etudiant}}</td>
+                            <td class="d-none d-lg-table-cell">{{contrat.tuteur_formation}} ({{contrat.tuteur_nb_affectation}})</td>
+                            <td>{{contrat.tuteur_entreprise}} </td>
+                            <td class="d-none d-lg-table-cell">{{contrat.cqpm.numero}}</td>
+                            <td class="d-none d-lg-table-cell">{% if contrat.fiche_liaison %}<span class="badge badge-info">1</span>{% endif %}</td>
+                            <td class="d-none d-lg-table-cell">
+                                <ul>
+                                    {% for rapport_tuteur_formation in contrat.rapport_tuteur_formation_set.all %}
+                                    <li><a class="link_detail" href="/entreprises/rapport_tuteur_formation/{{rapport_tuteur_formation.pk}}/detail/">Rapport {{forloop.counter}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                            <td class="d-none d-lg-table-cell">
+                                <a href="./{{contrat.pk}}/update/" class='link_create_update btn btn-default btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a>
+                                <a href="./{{contrat.pk}}/delete/" class='link_delete btn btn-default btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="map_display" class="hidden" style="padding-top: 20px;">
+                <div id="map-canvas" style="height:500px"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

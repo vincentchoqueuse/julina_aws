@@ -1,0 +1,42 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Intitule</th>
+            <th class="d-none d-md-table-cell">Coeff</th>
+            <th>Volume</th>
+            {% if can_update %}
+            <th>Action</th>
+            {% endif %}
+        </tr>
+    </thead>
+    <tbody>
+        
+        {% for ue in object_list %}
+        <tr class="ue">
+            <td><a href="/formations/ue/{{ue.pk}}/detail/" class="link_detail">UE {{ue.numero}}</a></td>
+            <td>{{ue.intitule|truncatechars:30}}</td>
+            <td class="d-none d-md-table-cell">{{ue.coefficient}}</td>
+            <td>{{ue.nb_heures}} H</td>
+            {% if can_update %}
+            <td> <a  class="link_create_update btn btn-default btn-sm" href="../ue/{{ue.pk}}/update/"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <a  class="link_create_update btn btn-default btn-sm" href="../ue/{{ue.pk}}/delete/"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+            {% endif %}
+        </tr>
+        
+        {% for module in ue.module_set.all %}
+        <tr>
+            <td><a href="/formations/module/{{module.pk}}/detail/" class="link_detail">{{module.code_scodoc}}</a></td>
+            <td>{{module.intitule|truncatechars:30}}</td>
+            <td class="d-none d-md-table-cell">{{module.coefficient}}</td>
+            <td>{{module.nb_heures}} H</td>
+            {% if can_update %}
+            <td> <a  class="link_create_update btn btn-default btn-sm" href="./{{module.pk}}/update/"><i class="fa fa-pencil" aria-hidden="true"></i></a><a  class="link_create_update btn btn-default btn-sm" href="./{{module.pk}}/delete/"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+        
+        {% endfor %}
+        
+    </tbody>
+</table>

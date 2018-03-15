@@ -1,0 +1,29 @@
+
+<table class="table">
+    <thead>
+        <tr >
+            <th>Nom/Prenom</th>
+            <th>Telephone</th>
+            <th class="d-none d-lg-table-cell">Email</th>
+            <th class="d-none d-md-table-cell">Bac+2</th>
+            <th class="d-none d-lg-table-cell">Formation(s)</th>
+            <th class="d-none d-md-table-cell">Action</th>
+        </tr>
+    </thead>
+    <tbody id="etudiant_table">
+        {% for etudiant in object_list %}
+        <tr>
+            <td><a class="link_detail" href="/promotions/etudiant/{{etudiant.pk}}/detail/">{{etudiant}}</a></td>
+            <td><a href="tel:{{etudiant.telephonemobile}}">{{etudiant.telephonemobile}}</a></td>
+            <td class="d-none d-lg-table-cell"><a href="mailto:{{etudiant.email_perso}}">{{etudiant.email_perso}}</a></td>
+            <td class="d-none d-md-table-cell">{{etudiant.bac2}}</td>
+            <td class="d-none d-md-table-cell">{{etudiant.promotion_set.all|join:","}}</td>
+            <td>
+                <a href="./{{etudiant.pk}}/update/" class='link_create_update btn btn-default btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a>
+                <a href="./{{etudiant.pk}}/delete/" class='link_delete btn btn-default btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+

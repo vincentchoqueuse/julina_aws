@@ -1,0 +1,30 @@
+<h2>Evaluations</h2>
+<table class="table mytable">
+    <thead>
+        <tr>
+            <th class="w-20">Module</th>
+            <th class="w-20">Nom</th>
+            <th class="w-20">Deadline</th>
+            <th class="w-20">Audience</th>
+            <th class="w-20">Active</th>
+            <th class="w-20">Devoirs</th>
+            <th class="w-20">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for object in objects %}
+        <tr>
+            <td><a href="{% url 'modules_detail' pk=object.module.pk%}">{{object.module.code_scodoc}}</a></td>
+            <td>{{object.nom}}</td>
+            <td>{{object.deadline}}</td>
+            <td>{{object.audience}}</td>
+            <td> <input type="checkbox" {% if object.active %}checked="checked" {% endif %}disabled></td>
+            <td> <a href="{% url 'devoirs_list' evaluation=object.pk%}" class="btn btn-secondary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+            <td>
+                <a href="{% url 'evaluations_update' pk=object.pk%}" class="btn btn-secondary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <a href="{% url 'evaluations_delete' pk=object.pk%}" class="btn btn-secondary btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+            </td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>

@@ -1,0 +1,51 @@
+{% extends "admin_raf/list.html" %}
+{% load generic %}
+
+{%block javascript%}
+<script>
+    $(function() {
+      $("#select_calendrier").on("change", function() {
+                                 calendrier_id="calendrier"+this.value+"_table";
+                                 $(".calendrier").addClass("hidden");
+                                 $("#"+calendrier_id).removeClass("hidden");
+                                 });
+      
+      
+      });
+      
+    </script>
+{%endblock%}
+
+{% block sidebar %}
+{% include 'admin_ens/sidebar.html' with raf=promotion.formation %}
+{% endblock %}
+
+
+{%block content %}
+{% include 'admin_raf/promotion_nav.html' with menu="calendrier" %}
+<div class="tab-content" id="nav-tabContent">
+    <div class="card">
+        <div class="card-header">
+            Calendriers ({{object_list|length}} résultats)
+            <div class="pull-right">
+                <a class="link_create_update btn btn-default btn-sm"  href="../calendrier_hebdomadaire/create/" ><i class="fa fa-plus" aria-hidden="true"></i> Semaine</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="pull-right" style="padding-bottom: 10px;">
+                Calendrier
+                <select class="custom-select" id="select_calendrier">
+                    {% for calendrier in object_list %}
+                    <option {% if forloop.first %}selected{% endif %} value={{calendrier.pk}}>{{calendrier.groupe}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            {% for calendrier in object_list %}
+            <div class="calendrier {% if not forloop.first %}hidden{% endif %}" id="calendrier{{calendrier.pk}}_table">
+            {% include 'promotions/calendrier_hebdomadaire_list.html' with object_list=calendrier.calendrier_hebdomadaire_set.all %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

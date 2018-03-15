@@ -1,0 +1,31 @@
+
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Intitule</th>
+            <th>{{bulletin.moyenne}}/20</th>
+        </tr>
+    </thead>
+
+    {% for ue in bulletin.affectation.parcours.ues.all %}
+    <tr>
+        <th>UE {{ue.numero}} </th>
+        <th>{{ue.intitule}} </th>
+        <th></th>
+    </tr>
+        {% for module in ue.module_set.all %}
+        <tr>
+            <td>{{module.code_scodoc}} </td>
+            <td>{{module.intitule}} </td>
+            <td>
+                {% for note in bulletin.note_set.all%}
+                    {% if note.module.pk == module.pk %}{{note.moyenne}}{%endif %}
+                {% endfor %}
+            </td>
+        </tr>
+        {% endfor %}
+    {% endfor %}
+
+    </tbody>
+</table>

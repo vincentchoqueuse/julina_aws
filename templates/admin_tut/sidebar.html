@@ -1,0 +1,27 @@
+{% load generic %}
+<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+    
+    <li class="nav-header d-none d-lg-block">Menu Tuteur</li>
+    
+    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Profil">
+        <a class="nav-link {% if '/admin_tut/profil/' in request.path %}active{% endif %}" href="/admin_tut/profile/">
+            <i class="fa fa-fw fa-cog"></i>
+            <span class="nav-link-text">Profil</span>
+        </a>
+    </li>
+
+    {% for contrat in request.user.tuteur_entreprise.contrat_set.all %}
+    
+    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="contrat">
+        <a class="nav-link nav-link-collapse {%if not 'contrat' in request.path %}collapsed{%endif%}" data-toggle="collapse" href="#collapsecontrat" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-users"></i>
+            <span class="nav-link-text">Liste des Contrats</span>
+        </a>
+        <ul class="sidenav-second-level collapse {%if 'contrat' in request.path %}show{%endif%}" id="collapsecontrat">
+            {% for contrat in request.user.tuteur_entreprise.contrat_set.all %}
+            <li><a href="/admin_tut/contrat/{{contrat.pk}}/detail/" class="nav-link {% test_url_active request 'contrat' contrat.pk %}">{{contrat.affectation.etudiant}}</a></li>
+            {% endfor %}
+            
+        </ul>
+    {% endfor %}
+</ul>

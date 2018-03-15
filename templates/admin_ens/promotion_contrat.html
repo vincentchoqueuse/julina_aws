@@ -1,0 +1,42 @@
+{% extends "admin_ens/base.html" %}
+
+
+{%block javascript%}
+<script>
+    {% include 'entreprises/contrat_list_map.js' with object_list=object.get_contrat_list.all %}
+</script>
+{%endblock%}
+
+
+{%block content %}
+{% include 'admin_ens/promotion_nav.html' with nav_active="contrat" %}
+<div class="tab-content" id="nav-tabContent">
+    <div class="card">
+        <div class="card-header">Contrats</div>
+        <div class="card-body">
+            
+            <div class="row">
+                <div class="col">
+                    <div class="pull-right">
+                        Type
+                        <select class="custom-select" id="select_type">
+                            <option selected>Tous</option>
+                            <option >Stage</option>
+                            <option >Contrat de Professionnalisation</option>
+                        </select>
+                        <a href="#" id="map_button" class="btn btn-default"><i id="type_display" class="fa fa-map-marker" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="list_display" class="show">
+                {% include 'entreprises/contrat_list.html' with object_list=object.get_contrat_list.all %}
+            </div>
+            
+            <div id="map_display" class="hidden" style="padding-top: 20px;">
+                <div id="map-canvas" style="height:500px"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

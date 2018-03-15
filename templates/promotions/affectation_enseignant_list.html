@@ -1,0 +1,46 @@
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Module</th>
+            <th class="d-none d-md-table-cell">Intitule</th>
+            <th class="d-none d-lg-table-cell">Groupe</th>
+            <th>Enseignant</th>
+            <th>Nb heures</th>
+            {% if is_raf %}
+            <th class="d-none d-lg-table-cell">Adéquation</th>
+            {% endif %}
+            {% if can_update %}
+            <th class="d-none d-lg-table-cell">Actions</th>
+            {% endif %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for affectation in object_list %}
+        <tr>
+            <td><a href="/formations/module/{{affectation.module.pk}}/detail/" class ="link_detail">{{affectation.module.code_scodoc}}</a></td>
+            <td class="d-none d-md-table-cell">{{affectation.module.intitule|truncatechars:30}}</td>
+            <td class="groupe d-none d-lg-table-cell">{{affectation.groupe}}</td>
+            <td>{{affectation.enseignant}}</td>
+            <td>{{affectation.nb_heures}}</td>
+            {% if is_raf %}
+            <td class="d-none d-lg-table-cell">
+                {% if affectation.is_complete %}
+                    <span class="badge badge-info">OK</span></td>
+                {% else %}
+                    <span class="badge badge-info">Probleme</span></td>
+                {% endif %}
+            </td>
+            {% endif %}
+            {% if can_update %}
+            <td class="d-none d-lg-table-cell">
+                <a href="./{{affectation.pk}}/update/" class="link_create_update btn btn-default btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                {% if can_delete %}
+                <a href="./{{affectation.pk}}/delete/" class="link_create_update btn btn-default btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                {% endif %}
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,45 @@
+<dl class='row'>
+    <dt class='col-sm-3'>Entreprise</dt>
+    <dd class='col-sm-9'>{{object.entreprise}} ({{object.entreprise.adresse_rue}} {{object.entreprise.adresse_zip}}, {{object.entreprise.adresse_ville}})</dd>
+</dl>
+
+<dl class='row'>
+    <dt class='col-sm-3'>Adresse Stage</dt>
+    <dd class='col-sm-9'>{{object.fiche_liaison.adresse_stage}}</dd>
+</dl>
+
+<dl class='row'>
+    <dt class='col-sm-3'>Etudiant</dt>
+    <dd class='col-sm-9'>{{object.affectation.etudiant}} - {{object.affectation.promotion}} ({{object.affectation.etudiant.email_perso}})</dd>
+</dl>
+<dl class='row'>
+    <dt class='col-sm-3'>Tuteur Entreprise</dt>
+    <dd class='col-sm-9'>{{object.tuteur_entreprise}} ({{object.tuteur_entreprise.email}})</dd>
+</dl>
+<dl class='row'>
+    <dt class='col-sm-3'>Tuteur IUT</dt>
+    <dd class='col-sm-9'>{{object.tuteur_formation}}</dd>
+</dl>
+
+<h5>Fiche Liaison</h5>
+
+<dl class='row'>
+    <dt class='col-sm-3'>Intitule</dt>
+    <dd class='col-sm-9'>{{object.fiche_liaison.intitule}}</dd>
+</dl>
+
+<dl class='row'>
+    <dt class='col-sm-3'>Programme</dt>
+    <dd class='col-sm-9'>{{object.fiche_liaison.programme}}</dd>
+</dl>
+
+<dl class='row'>
+    <dt class='col-sm-3'>Impression</dt>
+    <dd class='col-sm-9'>{{object.fiche_liaison.impression}}</dd>
+</dl>
+
+<dl class='row'>
+    <dt class='col-sm-3'>Problemes</dt>
+    <dd class='col-sm-9'>{{object.fiche_liaison.problemes}}</dd>
+</dl>
+

@@ -1,0 +1,5 @@
+enseignants;Statut;Employeur;email
+{% for enseignant in object_list %}{{enseignant.nom|safe }} {{enseignant.prenom|safe }}; {{enseignant.statut}}; {{enseignant.employeur}}; {{enseignant.email|safe }}
+{% endfor %}
+
+

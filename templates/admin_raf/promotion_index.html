@@ -1,0 +1,114 @@
+{% extends "admin_raf/base.html" %}
+{% load generic %}
+
+
+{% block breadcrumb %}
+{% include breadcrumb_template %}
+{% endblock %}
+
+{%block content %}
+{% include 'admin_raf/promotion_nav.html' with nav_active="detail" %}
+<div class="tab-content" id="nav-tabContent">
+
+    <div class="card">
+        <div class="card-header">Gestion</div>
+        <div class="card-body">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Nb Etu</th>
+                        <th>Type</th>
+                        <th>Nb Heures</th>
+                        <th>Moyenne</th>
+                    </tr>
+                </thead>
+                <tbody id="parcours_table">
+                    {% for parcours in object.formation.parcours_set.all %}
+                    <tr>
+                        <td><a class="link_detail" href="/formations/parcours/{{parcours.pk}}/detail/">{{parcours.nom_short}}</td>
+                        <td><span class="badge badge-info">{{parcours|find_nb_etu:promotion.pk}}</span></td>
+                        <td>{{parcours.nom}}</td>
+                        <td>{{parcours.nb_heures}}</td>
+                        <td>{{parcours|find_moy:promotion.pk}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    
+    <div class="card">
+        <div class="card-header">
+            Groupes
+            <div class="pull-right">
+                <a class="link_create_update btn btn-default btn-sm"  href="../groupe/create/" ><i class="fa fa-plus" aria-hidden="true"></i> Groupe</span></a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Nb Etu</th>
+                        <th>Type</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    {% for groupe in object.groupe_set.all %}
+                    <tr>
+                        <td><a href="/promotions/groupe/{{groupe.pk}}/detail/" class="link_detail">{{groupe.nom}}</a></td>
+                        <td><span class="badge badge-info">{{groupe.affectations.all|length}}</span></td>
+                        <td>{{groupe.get_type_display}}</td>
+                        <td>
+                            <a href="../groupe/{{groupe.pk}}/update/" class="link_create_update btn btn-default btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a href="../groupe/{{groupe.pk}}/delete/" class="link_delete btn btn-default btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-header">
+            Calendrier
+            <div class="pull-right">
+                <a class="link_create_update btn btn-default btn-sm"  href="../calendrier/create/" ><i class="fa fa-plus" aria-hidden="true"></i> Calendrier</span></a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Calendrier</th>
+                        <th>Groupe</th>
+                        <th>Nb semaines</th>
+                        <th class="d-none d-lg-table-cell">Action</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    {% for calendrier in object.calendrier_set.all %}
+                    <tr>
+                        <td><a href="{{calendrier.ics}}">fichier ics</a></td>
+                        <td>{{calendrier.groupe}}</td>
+                        <td>{{calendrier.calendrier_hebdomadaire_set.all|length}}</td>
+                        <td class="d-none d-lg-table-cell">
+                            <a href="../calendrier/{{calendrier.pk}}/update/" class='link_create_update btn btn-default btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a>
+                            <a href="../calendrier/{{calendrier.pk}}/delete/" class='link_create_update btn btn-default btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

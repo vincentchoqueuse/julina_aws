@@ -1,0 +1,52 @@
+{% load generic %}
+
+<div class="date_modification">{{object.modification}}</div>
+
+
+<h5>Equipe</h5>
+<dl class='row'>
+    <dt class='col-sm-3'>Enseignant</dt>
+    <dd class='col-sm-9'>{{object.enseignant}} (<a href="mailto:{{object.enseignant.email}}">{{object.enseignant.email}}</a>)</dd>
+</dl>
+<dl class='row'>
+    <dt class='col-sm-3'>Etudiants</dt>
+    <dd class='col-sm-9'>
+        <ul>
+            {% for affectation in object.affectation.all %}
+            <li>{{affectation.etudiant}} (<a href="mailto:{{affectation.etudiant.email_perso}}">{{affectation.etudiant.email_perso}}</a>)</li>
+            {% endfor %}
+        </ul>
+    </dd>
+</dl>
+
+
+
+
+<h5>Contenu</h5>
+
+<dl class='row'>
+    <dt class='col-sm-3'>Promotion</dt>
+    <dd class='col-sm-9'>{{object.promotion}}</dd>
+</dl>
+<dl class='row'>
+    <dt class='col-sm-3'>Intitule</dt>
+    <dd class='col-sm-9'>{{object.intitule}}</dd>
+</dl>
+
+<dl class='row'>
+    <dt class='col-sm-3'>Salle</dt>
+    <dd class='col-sm-9'>{{object.salle}}</dd>
+</dl>
+<dl class='row'>
+    <dt class='col-sm-3'>Contexte</dt>
+    <dd class='col-sm-9'>{{object.contexte|as_markdown}}</dd>
+</dl>
+<dl class='row'>
+    <dt class='col-sm-3'>Problématique</dt>
+    <dd class='col-sm-9'>{{object.problematique|as_markdown}}</dd>
+</dl>
+<dl class='row'>
+    <dt class='col-sm-3'>Methodologie</dt>
+    <dd class='col-sm-9'>{{object.methodologie|as_markdown}}</dd>
+</dl>
+

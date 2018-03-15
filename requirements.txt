@@ -1,0 +1,14 @@
+dj-database-url
+Django
+gunicorn
+psycopg2
+whitenoise
+django-bootstrap4
+requests
+markdown
+Pillow
+boto3
+django-storages
+xlrd
+isoweek
+unidecode

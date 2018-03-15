@@ -1,0 +1,1139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:generic"
+      name = "generic">
+      <Group
+         location = "group:templatetags"
+         name = "templatetags">
+         <Group
+            location = "group:__pycache__"
+            name = "__pycache__">
+            <FileRef
+               location = "group:convert_markdown.cpython-34.pyc">
+            </FileRef>
+            <FileRef
+               location = "group:formations.cpython-34.pyc">
+            </FileRef>
+            <FileRef
+               location = "group:general.cpython-34.pyc">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:/Users/choqueuse/Documents/codes/python/django/julina/generic/templatetags/generic.py">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:__pycache__"
+         name = "__pycache__">
+         <FileRef
+            location = "group:urls.cpython-34.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:views.cpython-34.pyc">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:urls.py">
+      </FileRef>
+      <FileRef
+         location = "group:views.py">
+      </FileRef>
+      <FileRef
+         location = "group:models.py">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:admin"
+      name = "admin">
+      <FileRef
+         location = "group:__init__.py">
+      </FileRef>
+      <FileRef
+         location = "group:urls.py">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:admin_tut"
+      name = "admin_tut">
+      <FileRef
+         location = "group:__init__.py">
+      </FileRef>
+      <FileRef
+         location = "group:urls.py">
+      </FileRef>
+      <FileRef
+         location = "group:views.py">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:admin_etu"
+      name = "admin_etu">
+      <FileRef
+         location = "group:__init__.py">
+      </FileRef>
+      <Group
+         location = "group:__pycache__"
+         name = "__pycache__">
+         <FileRef
+            location = "group:__init__.cpython-34.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:urls.cpython-34.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:views.cpython-34.pyc">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:urls.py">
+      </FileRef>
+      <FileRef
+         location = "group:views.py">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:admin_adm"
+      name = "admin_adm">
+      <FileRef
+         location = "group:__init__.py">
+      </FileRef>
+      <Group
+         location = "group:__pycache__"
+         name = "__pycache__">
+         <FileRef
+            location = "group:__init__.cpython-34.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:urls.cpython-34.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:views.cpython-34.pyc">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:urls.py">
+      </FileRef>
+      <FileRef
+         location = "group:views.py">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:admin_dep"
+      name = "admin_dep">
+      <Group
+         location = "group:__pycache__"
+         name = "__pycache__">
+         <FileRef
+            location = "group:urls.cpython-34.pyc">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:urls.py">
+      </FileRef>
+      <FileRef
+         location = "group:views.py">
+      </FileRef>
+      <FileRef
+         location = "group:__init__.py">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:admin_ens"
+      name = "admin_ens">
+      <FileRef
+         location = "group:__init__.py">
+      </FileRef>
+      <FileRef
+         location = "group:urls.py">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:admin_raf"
+      name = "admin_raf">
+      <FileRef
+         location = "group:__init__.py">
+      </FileRef>
+      <Group
+         location = "group:__pycache__"
+         name = "__pycache__">
+         <FileRef
+            location = "group:__init__.cpython-34.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:admin_views.cpython-34.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:forms.cpython-34.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:models.cpython-34.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:raf_views.cpython-34.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:urls.cpython-34.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:views.cpython-34.pyc">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:urls.py">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:templates"
+      name = "templates">
+      <Group
+         location = "group:admin"
+         name = "admin">
+         <FileRef
+            location = "group:nav.html">
+         </FileRef>
+         <FileRef
+            location = "group:breadcrumb.html">
+         </FileRef>
+         <Group
+            location = "group:entreprises"
+            name = "entreprises">
+            <FileRef
+               location = "group:importation.html">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:formations"
+            name = "formations">
+         </Group>
+         <Group
+            location = "group:personnes"
+            name = "personnes">
+         </Group>
+         <Group
+            location = "group:promotions"
+            name = "promotions">
+            <Group
+               location = "group:etudiant"
+               name = "etudiant">
+            </Group>
+         </Group>
+      </Group>
+      <Group
+         location = "group:admin_ens"
+         name = "admin_ens">
+         <FileRef
+            location = "group:base.html">
+         </FileRef>
+         <FileRef
+            location = "group:list.html">
+         </FileRef>
+         <FileRef
+            location = "group:detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:sidebar.html">
+         </FileRef>
+         <FileRef
+            location = "group:/Users/choqueuse/Documents/codes/python/django/julina/templates/admin_ens/profil_nav.html">
+         </FileRef>
+         <FileRef
+            location = "group:/Users/choqueuse/Documents/codes/python/django/julina/templates/admin_ens/profil_index.html">
+         </FileRef>
+         <FileRef
+            location = "group:profil_breadcrumb.html">
+         </FileRef>
+         <FileRef
+            location = "group:promotion_breadcrumb.html">
+         </FileRef>
+         <FileRef
+            location = "group:promotion_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:promotion_nav.html">
+         </FileRef>
+         <FileRef
+            location = "group:promotion_contrat.html">
+         </FileRef>
+         <FileRef
+            location = "group:contrat_breadcrumb.html">
+         </FileRef>
+         <FileRef
+            location = "group:contrat_nav.html">
+         </FileRef>
+         <FileRef
+            location = "group:contrat_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:projet_tuteure_breadcrumb.html">
+         </FileRef>
+         <FileRef
+            location = "group:projet_tuteure_nav.html">
+         </FileRef>
+         <FileRef
+            location = "group:projet_tuteure_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:projet_tuteure_projet.html">
+         </FileRef>
+         <FileRef
+            location = "group:projet_tuteure_consigne.html">
+         </FileRef>
+         <FileRef
+            location = "group:administration_entreprise.html">
+         </FileRef>
+         <FileRef
+            location = "group:administration_entreprise_map.html">
+         </FileRef>
+         <FileRef
+            location = "group:administration_tuteur.html">
+         </FileRef>
+         <FileRef
+            location = "group:administration_enseignant.html">
+         </FileRef>
+         <FileRef
+            location = "group:administration_etudiant.html">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:admin_adm"
+         name = "admin_adm">
+         <FileRef
+            location = "group:index.html">
+         </FileRef>
+         <FileRef
+            location = "group:sidebar.html">
+         </FileRef>
+         <FileRef
+            location = "group:profil_nav.html">
+         </FileRef>
+         <FileRef
+            location = "group:profil_breadcrumb.html">
+         </FileRef>
+         <FileRef
+            location = "group:profil_index.html">
+         </FileRef>
+         <FileRef
+            location = "group:etudiant_list.html">
+         </FileRef>
+         <FileRef
+            location = "group:enseignant_list.html">
+         </FileRef>
+         <FileRef
+            location = "group:promotion_breadcrumb.html">
+         </FileRef>
+         <FileRef
+            location = "group:promotion_nav.html">
+         </FileRef>
+         <FileRef
+            location = "group:promotion_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:absence_list.html">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:admin_tut"
+         name = "admin_tut">
+         <FileRef
+            location = "group:index.html">
+         </FileRef>
+         <FileRef
+            location = "group:sidebar.html">
+         </FileRef>
+         <FileRef
+            location = "group:/Users/choqueuse/Documents/codes/python/django/julina/templates/admin_tut/profil_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:rapport_tuteur_entreprise_list.html">
+         </FileRef>
+         <FileRef
+            location = "group:profil_breadcrumb.html">
+         </FileRef>
+         <FileRef
+            location = "group:/Users/choqueuse/Documents/codes/python/django/julina/templates/admin_tut/profil_nav.html">
+         </FileRef>
+         <FileRef
+            location = "group:/Users/choqueuse/Documents/codes/python/django/julina/templates/admin_tut/contrat_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:contrat_nav.html">
+         </FileRef>
+         <FileRef
+            location = "group:contrat_breadcrumb.html">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:admin_dep"
+         name = "admin_dep">
+         <FileRef
+            location = "group:index.html">
+         </FileRef>
+         <FileRef
+            location = "group:promotion_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:sidebar.html">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:projets"
+         name = "projets">
+         <FileRef
+            location = "group:projet_tuteure_ens_list.html">
+         </FileRef>
+         <FileRef
+            location = "group:projet_tuteure_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:suivi_projet_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:projet_tuteure_list.html">
+         </FileRef>
+         <FileRef
+            location = "group:suivi_projet_list.html">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:etudiants"
+         name = "etudiants">
+         <FileRef
+            location = "group:bulletins_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:etudiants_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:affectations_list.html">
+         </FileRef>
+         <FileRef
+            location = "group:affectation_etudiant_1.html">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:admin_etu"
+         name = "admin_etu">
+         <FileRef
+            location = "group:base.html">
+         </FileRef>
+         <FileRef
+            location = "group:sidebar.html">
+         </FileRef>
+         <FileRef
+            location = "group:/Users/choqueuse/Documents/codes/python/django/julina/templates/admin_etu/profil_nav.html">
+         </FileRef>
+         <FileRef
+            location = "group:profil_breadcrumb.html">
+         </FileRef>
+         <FileRef
+            location = "group:/Users/choqueuse/Documents/codes/python/django/julina/templates/admin_etu/profil_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:/Users/choqueuse/Documents/codes/python/django/julina/templates/admin_etu/profil_calendrier.html">
+         </FileRef>
+         <FileRef
+            location = "group:/Users/choqueuse/Documents/codes/python/django/julina/templates/admin_etu/affectation_etudiant_breadcrumb.html">
+         </FileRef>
+         <FileRef
+            location = "group:/Users/choqueuse/Documents/codes/python/django/julina/templates/admin_etu/affectation_etudiant_nav.html">
+         </FileRef>
+         <FileRef
+            location = "group:/Users/choqueuse/Documents/codes/python/django/julina/templates/admin_etu/affectation_etudiant_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:contrat_breadcrumb.html">
+         </FileRef>
+         <FileRef
+            location = "group:contrat_nav.html">
+         </FileRef>
+         <FileRef
+            location = "group:contrat_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:contrat_entreprise.html">
+         </FileRef>
+         <FileRef
+            location = "group:projet_tuteure_nav.html">
+         </FileRef>
+         <FileRef
+            location = "group:projet_tuteure_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:projet_tuteure_breadcrumb.html">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:admin_raf"
+         name = "admin_raf">
+         <FileRef
+            location = "group:base.html">
+         </FileRef>
+         <FileRef
+            location = "group:list.html">
+         </FileRef>
+         <FileRef
+            location = "group:base_promotion.html">
+         </FileRef>
+         <FileRef
+            location = "group:modal_form_entreprise.html">
+         </FileRef>
+         <FileRef
+            location = "group:test_autocomplete.html">
+         </FileRef>
+         <FileRef
+            location = "group:formation_nav.html">
+         </FileRef>
+         <FileRef
+            location = "group:formation_breadcrumb.html">
+         </FileRef>
+         <FileRef
+            location = "group:/Users/choqueuse/Documents/codes/python/django/julina/templates/admin_raf/formation_index.html">
+         </FileRef>
+         <FileRef
+            location = "group:formation_ue.html">
+         </FileRef>
+         <FileRef
+            location = "group:/Users/choqueuse/Documents/codes/python/django/julina/templates/admin_raf/formation_consigne.html">
+         </FileRef>
+         <FileRef
+            location = "group:promotion_breadcrumb.html">
+         </FileRef>
+         <FileRef
+            location = "group:/Users/choqueuse/Documents/codes/python/django/julina/templates/admin_raf/promotion_nav.html">
+         </FileRef>
+         <FileRef
+            location = "group:/Users/choqueuse/Documents/codes/python/django/julina/templates/admin_raf/promotion_index.html">
+         </FileRef>
+         <FileRef
+            location = "group:/Users/choqueuse/Documents/codes/python/django/julina/templates/admin_raf/promotion_calendrier.html">
+         </FileRef>
+         <FileRef
+            location = "group:/Users/choqueuse/Documents/codes/python/django/julina/templates/admin_raf/promotion_contrat.html">
+         </FileRef>
+         <FileRef
+            location = "group:sidebar.html">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:latex"
+         name = "latex">
+         <Group
+            location = "group:guide_de_la_formation"
+            name = "guide_de_la_formation">
+            <FileRef
+               location = "group:description_ue_tot_SARI.tex">
+            </FileRef>
+            <FileRef
+               location = "group:module.tex">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:includes"
+         name = "includes">
+         <FileRef
+            location = "group:documents_table.html">
+         </FileRef>
+         <FileRef
+            location = "group:contrats_table.html">
+         </FileRef>
+         <FileRef
+            location = "group:evaluations_table.html">
+         </FileRef>
+         <FileRef
+            location = "group:devoirs_table.html">
+         </FileRef>
+         <FileRef
+            location = "group:enseignants_table.html">
+         </FileRef>
+         <FileRef
+            location = "group:edit_form.html">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:entreprises"
+         name = "entreprises">
+         <FileRef
+            location = "group:entreprise_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:tuteur_entreprise_list.html">
+         </FileRef>
+         <FileRef
+            location = "group:entreprise_list.html">
+         </FileRef>
+         <FileRef
+            location = "group:entreprise_list.csv">
+         </FileRef>
+         <FileRef
+            location = "group:tuteur_list.html">
+         </FileRef>
+         <FileRef
+            location = "group:/Users/choqueuse/Documents/codes/python/django/julina/templates/entreprises/tuteur_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:/Users/choqueuse/Documents/codes/python/django/julina/templates/entreprises/entreprise_carte_list.html">
+         </FileRef>
+         <FileRef
+            location = "group:entreprise_1.html">
+         </FileRef>
+         <FileRef
+            location = "group:contrat_list_map.js">
+         </FileRef>
+         <FileRef
+            location = "group:contrat_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:entreprise_detail_map.js">
+         </FileRef>
+         <FileRef
+            location = "group:fiche_liaison_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:rapport_tuteur_formation_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:entreprise_list_map.js">
+         </FileRef>
+         <FileRef
+            location = "group:contrat_list.html">
+         </FileRef>
+         <FileRef
+            location = "group:contrat_trio_list.html">
+         </FileRef>
+         <FileRef
+            location = "group:rapport_tuteur_entreprise_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:/Users/choqueuse/Documents/codes/python/django/julina/templates/entreprises/contrat_suivi_list.html">
+         </FileRef>
+         <FileRef
+            location = "group:/Users/choqueuse/Documents/codes/python/django/julina/templates/entreprises/rapport_tuteur_entreprise_list.html">
+         </FileRef>
+         <FileRef
+            location = "group:/Users/choqueuse/Documents/codes/python/django/julina/templates/entreprises/rapport_tuteur_formation_list.html">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:promotions"
+         name = "promotions">
+         <FileRef
+            location = "group:etudiant_form.html">
+         </FileRef>
+         <FileRef
+            location = "group:etudiant_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:etudiant_list.html">
+         </FileRef>
+         <FileRef
+            location = "group:promotion_list.html">
+         </FileRef>
+         <FileRef
+            location = "group:affectation_etudiant_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:promotion_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:index.html">
+         </FileRef>
+         <FileRef
+            location = "group:groupe_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:affectation_etudiant_list.html">
+         </FileRef>
+         <FileRef
+            location = "group:bulletin_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:calendrier_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:calendrier_list.html">
+         </FileRef>
+         <FileRef
+            location = "group:absence_list.html">
+         </FileRef>
+         <FileRef
+            location = "group:absence_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:calendrier_hebdomadaire_list.html">
+         </FileRef>
+         <FileRef
+            location = "group:projet_tuteure_list.html">
+         </FileRef>
+         <FileRef
+            location = "group:document4groupe_list.html">
+         </FileRef>
+         <FileRef
+            location = "group:affectation_enseignant_list.html">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:formations"
+         name = "formations">
+         <FileRef
+            location = "group:formation_list.html">
+         </FileRef>
+         <FileRef
+            location = "group:enseignant_list.html">
+         </FileRef>
+         <FileRef
+            location = "group:departement_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:formation_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:parcours_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:module_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:ue_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:enseignant_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:consigne.html">
+         </FileRef>
+         <FileRef
+            location = "group:ue_list.html">
+         </FileRef>
+         <FileRef
+            location = "group:parcours_list.html">
+         </FileRef>
+         <FileRef
+            location = "group:document4groupe_list.html">
+         </FileRef>
+         <FileRef
+            location = "group:consigne_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:consigne_feuille_emargement_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:consigne_contrat_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:consigne_projet_detail.html">
+         </FileRef>
+         <FileRef
+            location = "group:/Users/choqueuse/Documents/codes/python/django/julina/templates/formations/enseignant_list.csv">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:base.html">
+      </FileRef>
+      <FileRef
+         location = "group:base_1column.html">
+      </FileRef>
+      <FileRef
+         location = "group:index.html">
+      </FileRef>
+      <FileRef
+         location = "group:list.html">
+      </FileRef>
+      <FileRef
+         location = "group:form.html">
+      </FileRef>
+      <FileRef
+         location = "group:detail.html">
+      </FileRef>
+      <FileRef
+         location = "group:delete.html">
+      </FileRef>
+      <FileRef
+         location = "group:2columns_list.html">
+      </FileRef>
+      <FileRef
+         location = "group:2columns_form.html">
+      </FileRef>
+      <FileRef
+         location = "group:2columns_delete.html">
+      </FileRef>
+      <FileRef
+         location = "group:2columns_detail.html">
+      </FileRef>
+      <FileRef
+         location = "group:signup.html">
+      </FileRef>
+      <FileRef
+         location = "group:logout.html">
+      </FileRef>
+      <FileRef
+         location = "group:bootstrap_form.html">
+      </FileRef>
+      <FileRef
+         location = "group:bootstrap_form_delete.html">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:../static"
+      name = "static">
+      <Group
+         location = "group:../julina/static/js"
+         name = "js">
+         <FileRef
+            location = "group:sb-admin.min.js">
+         </FileRef>
+         <FileRef
+            location = "group:custom.js">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:../julina/static/css"
+         name = "css">
+         <FileRef
+            location = "group:sb-admin.css">
+         </FileRef>
+         <FileRef
+            location = "group:custom.css">
+         </FileRef>
+         <FileRef
+            location = "group:style.css">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:style.css">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:projets"
+      name = "projets">
+      <FileRef
+         location = "group:__init__.py">
+      </FileRef>
+      <FileRef
+         location = "group:admin.py">
+      </FileRef>
+      <FileRef
+         location = "group:apps.py">
+      </FileRef>
+      <Group
+         location = "group:migrations"
+         name = "migrations">
+         <FileRef
+            location = "group:__init__.py">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:models.py">
+      </FileRef>
+      <FileRef
+         location = "group:tests.py">
+      </FileRef>
+      <FileRef
+         location = "group:views.py">
+      </FileRef>
+      <FileRef
+         location = "group:urls.py">
+      </FileRef>
+      <FileRef
+         location = "group:admin_ens.py">
+      </FileRef>
+      <FileRef
+         location = "group:admin_raf.py">
+      </FileRef>
+      <FileRef
+         location = "group:admin_etu.py">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:../core"
+      name = "core">
+      <FileRef
+         location = "group:../julina/core/views.py">
+      </FileRef>
+      <FileRef
+         location = "group:../julina/core/__init__.py">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:formations"
+      name = "formations">
+      <Group
+         location = "group:templatetags"
+         name = "templatetags">
+         <FileRef
+            location = "group:formations.py">
+         </FileRef>
+         <FileRef
+            location = "group:convert_markdown.py">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:__init__.py">
+      </FileRef>
+      <Group
+         location = "group:__pycache__"
+         name = "__pycache__">
+         <FileRef
+            location = "group:__init__.cpython-34.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:admin.cpython-34.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:models.cpython-34.pyc">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:apps.py">
+      </FileRef>
+      <Group
+         location = "group:migrations"
+         name = "migrations">
+         <FileRef
+            location = "group:__init__.py">
+         </FileRef>
+         <Group
+            location = "group:__pycache__"
+            name = "__pycache__">
+            <FileRef
+               location = "group:0001_initial.cpython-34.pyc">
+            </FileRef>
+            <FileRef
+               location = "group:0002_auto_20170629_1657.cpython-34.pyc">
+            </FileRef>
+            <FileRef
+               location = "group:__init__.cpython-34.pyc">
+            </FileRef>
+         </Group>
+      </Group>
+      <FileRef
+         location = "group:models.py">
+      </FileRef>
+      <FileRef
+         location = "group:tests.py">
+      </FileRef>
+      <FileRef
+         location = "group:views.py">
+      </FileRef>
+      <FileRef
+         location = "group:urls.py">
+      </FileRef>
+      <FileRef
+         location = "group:tools.py">
+      </FileRef>
+      <FileRef
+         location = "group:admin.py">
+      </FileRef>
+      <FileRef
+         location = "group:admin_ens.py">
+      </FileRef>
+      <FileRef
+         location = "group:admin_raf.py">
+      </FileRef>
+      <FileRef
+         location = "group:admin_adm.py">
+      </FileRef>
+      <FileRef
+         location = "group:forms.py">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:julina"
+      name = "julina">
+      <FileRef
+         location = "group:__init__.py">
+      </FileRef>
+      <Group
+         location = "group:__pycache__"
+         name = "__pycache__">
+         <FileRef
+            location = "group:__init__.cpython-34.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:settings.cpython-34.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:urls.cpython-34.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:wsgi.cpython-34.pyc">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:settings.py">
+      </FileRef>
+      <FileRef
+         location = "group:urls.py">
+      </FileRef>
+      <FileRef
+         location = "group:wsgi.py">
+      </FileRef>
+      <FileRef
+         location = "group:storage_backends.py">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "group:README.md">
+   </FileRef>
+   <Group
+      location = "group:promotions"
+      name = "promotions">
+      <Group
+         location = "group:templatetags"
+         name = "templatetags">
+         <FileRef
+            location = "group:promotions.py">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:__init__.py">
+      </FileRef>
+      <FileRef
+         location = "group:urls.py">
+      </FileRef>
+      <Group
+         location = "group:__pycache__"
+         name = "__pycache__">
+         <FileRef
+            location = "group:__init__.cpython-34.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:admin.cpython-34.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:models.cpython-34.pyc">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:apps.py">
+      </FileRef>
+      <FileRef
+         location = "group:models.py">
+      </FileRef>
+      <FileRef
+         location = "group:tests.py">
+      </FileRef>
+      <FileRef
+         location = "group:views.py">
+      </FileRef>
+      <FileRef
+         location = "group:forms.py">
+      </FileRef>
+      <FileRef
+         location = "group:admin.py">
+      </FileRef>
+      <FileRef
+         location = "group:admin_etu.py">
+      </FileRef>
+      <FileRef
+         location = "group:admin_ens.py">
+      </FileRef>
+      <FileRef
+         location = "group:admin_raf.py">
+      </FileRef>
+      <FileRef
+         location = "group:admin_adm.py">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:entreprises"
+      name = "entreprises">
+      <Group
+         location = "group:templatetags"
+         name = "templatetags">
+         <FileRef
+            location = "group:__init__.py">
+         </FileRef>
+         <Group
+            location = "group:__pycache__"
+            name = "__pycache__">
+            <FileRef
+               location = "group:__init__.cpython-34.pyc">
+            </FileRef>
+            <FileRef
+               location = "group:general.cpython-34.pyc">
+            </FileRef>
+            <FileRef
+               location = "group:promotions.cpython-34.pyc">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:entreprises.py">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:__init__.py">
+      </FileRef>
+      <Group
+         location = "group:__pycache__"
+         name = "__pycache__">
+         <FileRef
+            location = "group:__init__.cpython-34.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:admin.cpython-34.pyc">
+         </FileRef>
+         <FileRef
+            location = "group:models.cpython-34.pyc">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:apps.py">
+      </FileRef>
+      <Group
+         location = "group:migrations"
+         name = "migrations">
+         <FileRef
+            location = "group:__init__.py">
+         </FileRef>
+         <Group
+            location = "group:__pycache__"
+            name = "__pycache__">
+            <FileRef
+               location = "group:0001_initial.cpython-34.pyc">
+            </FileRef>
+            <FileRef
+               location = "group:0002_entreprise.cpython-34.pyc">
+            </FileRef>
+            <FileRef
+               location = "group:0003_auto_20170629_1249.cpython-34.pyc">
+            </FileRef>
+            <FileRef
+               location = "group:__init__.cpython-34.pyc">
+            </FileRef>
+         </Group>
+      </Group>
+      <FileRef
+         location = "group:models.py">
+      </FileRef>
+      <FileRef
+         location = "group:tests.py">
+      </FileRef>
+      <FileRef
+         location = "group:views.py">
+      </FileRef>
+      <FileRef
+         location = "group:urls.py">
+      </FileRef>
+      <FileRef
+         location = "group:forms.py">
+      </FileRef>
+      <FileRef
+         location = "group:admin.py">
+      </FileRef>
+      <FileRef
+         location = "group:admin_tut.py">
+      </FileRef>
+      <FileRef
+         location = "group:admin_etu.py">
+      </FileRef>
+      <FileRef
+         location = "group:admin_ens.py">
+      </FileRef>
+      <FileRef
+         location = "group:admin_raf.py">
+      </FileRef>
+   </Group>
+</Workspace>

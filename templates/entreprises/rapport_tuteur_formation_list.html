@@ -1,0 +1,33 @@
+<table class="table">
+    <thead>
+        <tr >
+            <th>Rapport</th>
+            <th class="d-none d-lg-table-cell">Tuteur</th>
+            <th>Entreprise</th>
+            <th>Etudiant</th>
+            <th class="d-none d-lg-table-cell">Date Visite</th>
+            {% if can_update %}
+            <th class="d-none d-lg-table-cell">Action</th>
+            {% endif %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for rapport_tuteur_formation in object_list %}
+        <tr>
+            <td><a class="link_detail" href="/entreprises/rapport_tuteur_formation/{{rapport_tuteur_formation.pk}}/detail/">Rapport Visite</a></td>
+            <td>{{rapport_tuteur_formation.contrat.tuteur_formation}}</td>
+            <td>{{rapport_tuteur_formation.contrat.entreprise}}</td>
+            <td>{{rapport_tuteur_formation.contrat.affectation.etudiant}}</td>
+            <td>{{rapport_tuteur_formation.date_visite|date}}</td>
+            {% if can_update %}
+            <td>
+                <a href="./{{rapport_tuteur_formation.pk}}/update/" class="link_create_update btn btn-default btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                {% if can_delete %}
+                <a href="./{{rapport_tuteur_formation.pk}}/delete/" class="link_delete btn btn-default btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                {% endif %}
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

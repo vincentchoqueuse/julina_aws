@@ -1,0 +1,20 @@
+{% extends "detail.html" %}
+
+{% block detail_content %}
+<div class="card">
+    <div class="card-header">
+        Contacts
+    </div>
+    <div class="card-body">
+        {% include 'entreprises/contrat_trio_list.html' %}
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">Fiches de Liaison</div>
+    <div class="card-body">
+        {% include 'entreprises/contrat_suivi_list.html' %}
+    </div>
+</div>
+{% endblock %}
+

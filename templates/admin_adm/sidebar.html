@@ -1,0 +1,42 @@
+{% load generic %}
+<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+    
+    <li class="nav-header d-none d-lg-block">Menu Administratif</li>
+    
+    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Profil">
+        <a class="nav-link {% if '/admin_adm/profil/' in request.path %}active{% endif %}" href="/admin_adm/profil/">
+            <i class="fa fa-fw fa-cog"></i>
+            <span class="nav-link-text">Profil</span>
+        </a>
+    </li>
+    
+    
+    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="formation">
+        <a class="nav-link nav-link-collapse {% if not '/adm/' in request.path %}collapsed{%endif%}" data-toggle="collapse" href="#collapseadministration" data-parent="#exampleAccordion">
+            <i class="fa fa-database" aria-hidden="true"></i>
+            <span class="nav-link-text">Administration</span>
+        </a>
+        <ul class="sidenav-second-level collapse {% if '/adm/' in request.path %}show{%endif%}" id="collapseadministration">
+            <li><a href="/admin_adm/adm/entreprise/" class="nav-link {% if '/adm/' in request.path %}active{%endif%}">Base de données</a></li>
+            
+        </ul>
+    </li>
+
+
+    {% for departement in request.user.administratif.departement_set.all %}
+    
+    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="departement{{departement.pk}}">
+        <a class="nav-link nav-link-collapse {% if not 'admin_adm/promotion/' in request.path %}collapsed{%endif%}" data-toggle="collapse" href="#collapsedepartement{{departement.pk}}" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-users"></i>
+            <span class="nav-link-text">Département {{departement}}</span>
+        </a>
+        <ul class="sidenav-second-level collapse {% if 'admin_adm/promotion/' in request.path %}show{%endif%}" id="collapsedepartement{{departement.pk}}">
+            {% for formation in departement.formation_set.all %}
+            {% for promotion in formation.promotion_set.all %}
+            <li class="{% if not promotion.active %}hidden{%endif%}"><a href="/admin_adm/promotion/{{promotion.pk}}/detail/" class="nav-link {% test_url_active request 'promotion' promotion.pk %} ">{{promotion}}</a></li>
+            {% endfor %}
+            {% endfor %}
+            
+        </ul>
+    {% endfor %}
+</ul>

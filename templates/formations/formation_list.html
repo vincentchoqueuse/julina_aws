@@ -1,0 +1,32 @@
+
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Action</th>
+            <th >Mention</th>
+            <th>Niveau</th>
+            <th>Domaine</th>
+            <th>Departement</th>
+            <th>Promotions</th>
+            <th class="d-none d-lg-table-cell">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for formation in object_list %}
+        <tr >
+            <td ><a class="link_detail" href="/formations/formation/{{formation.pk}}/detail/">{{formation.mention_short }}</a></td>
+            <td >{{ formation.mention }}</td>
+            <td>{{ formation.niveau }}</td>
+            <td>{{ formation.domaine }}</td>
+            <td>{{ formation.departement }}</td>
+            <td>{{ formation.promotion_set.all|length }}</td>
+            <td class="d-none d-lg-table-cell">
+                <a href="./{{formation.pk}}/update/" class='link_create_update btn btn-default btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a>
+                <a href="./{{formation.pk}}/delete/" class='link_delete btn btn-default btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a></td>
+            </td>
+        </tr>
+        {% endfor %}
+        
+    </tbody>
+</table>
+

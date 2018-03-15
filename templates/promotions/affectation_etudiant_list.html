@@ -1,0 +1,47 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Photo</th>
+            <th>Nom</th>
+            <th class="d-none d-lg-table-cell">Pedigree</th>
+            <th class="d-none d-lg-table-cell">Parcours</th>
+            <th class="d-none d-md-table-cell">Groupes</th>
+            <th>Bulletin</th>
+            <th>Profil</th>
+            <th class="d-none d-lg-table-cell">Email</th>
+            {% if is_raf %}
+            <th class="d-none d-lg-table-cell">Action</th>
+            {% endif %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for affectation in object_list %}
+        <tr>
+            <td>
+                {% if affectation.etudiant.photo %}
+                    <img class="img_avatar mx-auto d-block" src="{{MEDIA_URL}}{{affectation.etudiant.photo.url}}" alt="Card image cap">
+                {% else %}
+                    <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i>
+                {% endif %}
+            </td>
+            <td>
+                <a href="/promotions/etudiant/{{affectation.etudiant.pk}}/detail/" class="link_detail affectation_nom">{{affectation.etudiant}}</a>
+            </td>
+            <td class="d-none d-lg-table-cell">{{affectation.etudiant.bac2}}</td>
+            <td class="d-none d-lg-table-cell">{{affectation.parcours}}</td>
+            <td class="groupe d-none d-md-table-cell">{{affectation.groupe_set.all|join:", "}}</td>
+            <td ><a href="/promotions/bulletin/{{affectation.bulletin.pk}}/detail/" class="link_detail">{{affectation.bulletin.moyenne|floatformat:2}}</a></td>
+            <td>{% if not affectation.bulletin_visible %}<i class="fa fa-lock" aria-hidden="true"></i>{% else %}<i class="fa fa-unlock" aria-hidden="true"></i>{% endif %}</td>
+            <td class="d-none d-lg-table-cell"><a class="mail_perso" href="mailto:{{affectation.etudiant.email_perso}}">email</a></td>
+            
+            {% if is_raf %}
+            <td class="d-none d-lg-table-cell">
+                <a href="./{{affectation.pk}}/update/" class="link_create_update btn btn-default btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <a href="./{{affectation.pk}}/delete/" class="link_delete btn btn-default btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+

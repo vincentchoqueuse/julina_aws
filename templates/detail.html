@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load generic %}
+{% load bootstrap4 %}
+
+{% block sidebar %}
+{% include sidebar_template %}
+{% endblock %}
+
+{% block breadcrumb %}
+{% include breadcrumb_template %}
+{% endblock %}
+
+{%block content %}
+{% include nav_template %}
+<div class="tab-content" >
+    {% block detail_content %}
+    <div class="card">
+        <div class="card-header">{{title}}
+            <div class="pull-right">
+                {% block header_button %}
+                {% if can_create %}
+                <a href="./create/" class="link_create_update btn btn-default btn-sm" ><i class="fa fa-plus" aria-hidden="true"></i> Ajouter</a>
+                {% endif %}
+                {% if can_update %}
+                <a href="./update/" class="link_create_update btn btn-default btn-sm" ><i class="fa fa-pencil" aria-hidden="true"></i> Modifier</a>
+                {% endif %}
+                {% endblock %}
+            </div>
+        </div>
+        <div class="card-body">
+            {% include detail_template %}
+        </div>
+    </div>
+    {% endblock %}
+</div>
+{% endblock %}
+

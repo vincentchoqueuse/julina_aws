@@ -1,0 +1,26 @@
+{% extends "admin_ens/detail.html" %}
+
+{%block content %}
+{% include "admin_ens/contrat_nav.html" with menu="detail" %}
+<div class="tab-content" id="nav-tabContent">
+    <div class="card">
+        <div class="card-header">
+            Contacts
+        </div>
+        <div class="card-body">
+             {% include 'entreprises/contrat_trio_list.html' %}
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            Rapports de visites
+            <div class="pull-right">
+                <a class="link_create_update btn btn-default btn-sm"  href="/admin_ens/contrat/{{object.pk}}/rapport_tuteur_formation/create/" ><i class="fa fa-plus" aria-hidden="true"></i> Ajouter</a>
+            </div>
+        </div>
+        <div class="card-body">
+            {% include 'entreprises/rapport_tuteur_formation_list.html' with object_list=object.rapport_tuteur_formation_set.all %}
+        </div>
+    </div>
+</div>
+{% endblock %}

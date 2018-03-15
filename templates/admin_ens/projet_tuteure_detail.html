@@ -1,0 +1,19 @@
+{% extends "detail.html" %}
+
+{% block detail_content %}
+<div class="card">
+    <div class="card-header">
+        Contacts
+    </div>
+    <div class="card-body">
+        {% include 'promotions/affectation_etudiant_list.html' with object_list=object.affectation.all show_link=True %}
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">Fiches de Liaison</div>
+    <div class="card-body">
+        {% include 'projets/suivi_projet_list.html' with object_list=object.suivi_projet_set.all  %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th></th>
+            <th >Promotion</th>
+            <th >Type</th>
+            {% if show_entreprise %}<th >Entreprise</th>{% endif%}
+            {% if show_etudiant %}<th >Etudiant</th>
+            
+            {% endif%}
+            <th >Tuteur Ind.</th>
+            {% if show_tuteur %}
+                <th >Tuteur IUT</th>
+            {% endif%}
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for object in objects %}
+        <tr>
+            <td><a href="{% url 'contrats_detail' pk=object.pk %}">Détail</a></td>
+            <td>{{object.affectation.promotion}}</td>
+            <td>{{object.type}}</td>
+            {% if show_entreprise %}
+                <td>{{object.entreprise.nom}}</td>
+            {%endif%}
+            {% if show_etudiant %}
+                <td>{{object.affectation.etudiant}}</td>
+            {%endif%}
+            <td>{{object.tuteur_entreprise}}</td>
+
+            {% if show_tuteur and object.tuteur_formation %}
+            <td>{{object.tuteur_formation}}</td>
+            {%endif%}
+            
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

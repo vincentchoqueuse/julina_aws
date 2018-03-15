@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% load formations %}
+
+
+{% block javascript_ready %}
+$("#search").change(function(event) {$( "#search" ).submit();});
+{% endblock %}
+
+
+{% block title %}Promotion {{object}} {% endblock %}
+
+{% block breadcrumb %}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+    <li class="breadcrumb-item active"><a href="{% url 'promotions_list' %}">Promotions</a></li>
+    <li class="breadcrumb-item active">{{object}}</li>
+</ol>
+{% endblock %}
+
+
+
+{%block content %}
+<ul class="nav nav-tabs">
+    <li class="nav-item dropdown">
+        <a class="nav-link active" data-toggle="tab" href="#effectifs" role="tab" aria-controls="profile">Effectifs</a>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link "data-toggle="tab" href="#enseignants" role="tab" aria-controls="profile">Equipe Pedagogique</a>
+    </li>
+    
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="effectifs" role="tabpanel">
+        
+        <div class="pull-right">
+            <form id="search" method="get">
+                {{form.groupe}}
+                {{form.tri}}
+            </form>
+        </div>
+        
+        <table class="table ">
+            <thead>
+                <tr >
+                    <th ></th>
+                    <th >Nom/Prenom</th>
+                    <th >Pedigree</th>
+                    <th >Parcours</th>
+                    <th >Entreprise</th>
+                    <th>Groupes</th>
+                    <th>Moyenne</th>
+                    <th ><a href="mailto:{% for affectation in affectation_list %}{{affectation.etudiant.email_perso }}{% if not forloop.last %},{% endif %}{%endfor%}" id="email_tot"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for affectation in affectation_etudiant_list %}
+                <tr>
+                    <td>
+                        <div class="profile">
+                            {% if affectation.etudiant.profile_image %}
+                            <img src="{{MEDIA_URL}}{{affectation.etudiant.profile_image.url}}" class="img_avatar " />
+                            {% else %}
+                            <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
+                            {% endif %}
+                            
+                        </div>
+                    </td>
+                    <td ><a href="{% url 'affectations_etudiant_detail' pk=affectation.pk %}" >{{ affectation.etudiant }}</a></td>
+                    <td>{{affectation.etudiant.bac2}}</td>
+                    <td>{{affectation.parcours}}</td>
+                    <td>{% for contrat in affectation.contrat_set.all%}{{contrat.entreprise}} {%endfor%}</td>
+                    <td class="affectation_groupes {{affectation.groupe_C.pk}} {{affectation.groupe_TD.pk}} {{affectation.groupe_TP.pk}}">{{affectation.groupe_C}}, {{affectation.groupe_TD}} ,{{affectation.groupe_TP}}</td>
+                    <td>{{affectation.bulletin.moyenne}} </td>
+                    <td class="email">  <a href="mailto:{{affectation.etudiant.email_perso }}"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></td>
+                    
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+    </div>
+    <div class="tab-pane" id="enseignants" role="tabpanel">
+        
+        <table class="table ">
+            <tbody>
+                {% for ue_object_list in affectation_enseignant_list|get_sorted_by_ue %}
+                <tr>
+                    <th >UE {{ue_object_list.ue.numero}}</td>
+                        <th>UE {{ue_object_list.ue.intitule}}</td>
+                            <th></td>
+                                <th ></td>
+                                    
+                                    </tr>
+                {% for affectation in ue_object_list.object_list %}
+                {% if affectation.enseignant.pk %}
+                <tr>
+                    <td ><a href="{% url 'modules_detail' pk=affectation.module.pk %}">{{affectation.module.code_scodoc}}</a></td>
+                    <td>{{affectation.module.intitule}}</td>
+                    <td>{{affectation.groupe}}</td>
+                    <td ><a href="{% url 'enseignants_detail' pk=affectation.enseignant.pk %}">{{ affectation.enseignant }}</a></td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{%endblock %}
+
+

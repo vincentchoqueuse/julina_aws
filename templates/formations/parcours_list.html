@@ -1,0 +1,24 @@
+<table class="table">
+    <thead>
+        <tr >
+            <th>Code</th>
+            <th>Intitule</th>
+            <th>Nb heures</th>
+            <th>Actions</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for parcours in object_list%}
+        <tr>
+            <td><a class="link_detail" href="/formations/parcours/{{parcours.pk}}/detail/">{{parcours.nom_short}}</td>
+            <td>{{parcours.nom}}</td>
+            <td>{{parcours.nb_heures}}</td>
+            <td>
+                <a href="../parcours/{{parcours.pk}}/update/" class="link_create_update btn btn-default btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <a href="../parcours/{{parcours.pk}}/delete/" class="link_delete btn btn-default btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

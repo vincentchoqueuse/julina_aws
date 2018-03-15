@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load generic %}
+
+{% block sidebar %}
+{% include 'admin_ens/sidebar.html' %}
+{% endblock %}
+
+{% block breadcrumb %}
+{% include breadcrumb_template %}
+{% endblock %}
+
+
+{%block content %}
+{% include nav_template %}
+<div class="tab-content" id="nav-tabContent">
+    <div class="card">
+        <div class="card-header">{{title}}
+            {% block header_button %}
+            {% if can_create %}
+            <div class="pull-right">
+                <a href="./create/" class="link_create_update btn btn-default btn-sm" ><i class="fa fa-plus" aria-hidden="true"></i> Ajouter</a>
+            </div>
+            {% endif %}
+            {% endblock %}
+        </div>
+        
+        <div class="card-body">
+            {% include list_template %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

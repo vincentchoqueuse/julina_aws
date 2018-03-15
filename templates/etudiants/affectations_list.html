@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{%block sidebar %}
+{% include sidebar_menu_url %}
+{%endblock %}
+
+{%block content %}
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Photo</th>
+            <th>Etudiant</th>
+            <th>Pedigree</th>
+            <th>Email</th>
+            <th>Telephone</th>
+            <th>Moyenne</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for object in object_list %}
+        <tr >
+            <td>
+            {% if object.etudiant.photo %}
+                <img class="img_avatar mx-auto d-block" src="{{MEDIA_URL}}{{object.etudiant.photo.url}}" alt="Card image cap">
+            {% else %}
+                <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i>
+            {% endif %}
+            </td>
+            <td>{{object.etudiant.prenom}} {{object.etudiant.nom}}</td>
+            <td>{{object.etudiant.bac2}}</td>
+            <td>{{object.etudiant.email_perso }}</td>
+            <td>{{object.etudiant.telephonemobile}}</td>
+            <td>{{object.bulletin.moyenne}}</td>
+        </tr>
+        {% endfor %}
+        
+    </tbody>
+</table>
+{%endblock %}

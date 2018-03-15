@@ -1,0 +1,40 @@
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th ></th>
+            <th >Nom/Prenom</th>
+            <th >Statut</th>
+            <th >Groupes</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for enseignant in object_list %}
+        <tr>
+            <td>
+                <div class="profile">
+                    <a href="{%  url 'enseignants_detail' pk=enseignant.pk  %}" >
+                        {% if etudiant.profile_image %}
+                        <img src="{{MEDIA_URL}}{{etudiant.profile_image.url}}" class="img_avatar " />
+                        {% else %}
+                        <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
+                        {% endif %}
+                    </a>
+                </div>
+            </td>
+            <td >{{ enseignant.nom }} {{ enseignant.prenom }}</td>
+            <td>{{ enseignant.statut }}</td>
+            <td>
+                {% for affectation in enseignant.affectation_enseignant.all %}
+                {% if affectation.groupe.promotion.active %}<a href="{%  url 'modules_detail' pk=affectation.module.pk  %}">{{affectation.module.code_scodoc}}</a> ({{affectation.groupe.nom}}){% endif %}
+                {% endfor %}
+                sd
+                
+                {% for module in enseignant.get_active_modules %}
+                    <a href="{%  url 'modules_detail' pk=module.pk  %}">{{module.code_scodoc}}</a>
+                {% endfor %}
+                
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

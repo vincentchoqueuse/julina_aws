@@ -1,0 +1,68 @@
+{% load generic %}
+
+<dl class='row'>
+    <dt class='col-sm-3'>UE</dt>
+    <dd class='col-sm-9'>{{object.ue}}</dd>
+</dl>
+
+<dl class='row'>
+    <dt class='col-sm-3'>Codes</dt>
+    <dd class='col-sm-9'>{{object.code_scodoc}} (Apogee {{object.code_apogee}})</dd>
+</dl>
+<dl class='row'>
+    <dt class='col-sm-3'>Intitule</dt>
+    <dd class='col-sm-9'>{{object.intitule}}</dd>
+</dl>
+<dl class='row'>
+    <dt class='col-sm-3'>Volume Horaire</dt>
+    <dd class='col-sm-9'>Cours: {{object.nb_heures_cours}} / TD: {{object.nb_heures_td}} / TP: {{object.nb_heures_tp}}</dd>
+</dl>
+<dl class='row'>
+    <dt class='col-sm-3'>Nombre ECTS</dt>
+    <dd class='col-sm-9'>{{object.nb_ects}}</dd>
+</dl>
+<dl class='row'>
+    <dt class='col-sm-3'>Coefficient</dt>
+    <dd class='col-sm-9'>{{object.coefficient}}</dd>
+</dl>
+
+<h5>Informations Générales</h5>
+
+<dl class='row'>
+    <dt class='col-sm-3'>Objectif</dt>
+    <dd class='col-sm-9'>{{object.objectifs|as_markdown}}</dd>
+</dl>
+<dl class='row'>
+    <dt class='col-sm-3'>Compétences Minimales</dt>
+    <dd class='col-sm-9'>{{object.competences_minimales|as_markdown}}</dd>
+</dl>
+<dl class='row'>
+    <dt class='col-sm-3'>Pré Requis</dt>
+    <dd class='col-sm-9'>{{object.pre_requis|as_markdown}}</dd>
+</dl>
+<dl class='row'>
+    <dt class='col-sm-3'>Contenu</dt>
+    <dd class='col-sm-9'>{{object.contenu|as_markdown}}</dd>
+</dl>
+<dl class='row'>
+    <dt class='col-sm-3'>Modalités</dt>
+    <dd class='col-sm-9'>{{object.modalites|as_markdown}}</dd>
+</dl>
+
+<dl class='row'>
+    <dt class='col-sm-3'>Prolongements</dt>
+    <dd class='col-sm-9'>
+        <ul>
+            {% for prolongement in object.prolongements.all %}
+            <li>{{prolongement.code_scodoc}}: {{prolongement.intitule}}</li>
+            {% endfor %}
+        </ul>
+    </dd>
+</dl>
+
+
+<dl class='row'>
+    <dt class='col-sm-3'>Mots Clés</dt>
+    <dd class='col-sm-9'>{{object.mots_cles}}</dd>
+</dl>
+

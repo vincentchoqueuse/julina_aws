@@ -1,0 +1,28 @@
+
+{% load generic %}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Fichier</th>
+            <th>Code</th>
+            <th>Module</th>
+            <th>Groupe</th>
+            <th>Type</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for document in object_list %}
+        <tr>
+            <td><a href="{{document.file.url}}">{{document.nom}}</a></td>
+            <td>{{document.affectation_enseignant.module.code_scodoc}}</td>
+            <td>{{document.affectation_enseignant.module.intitule}}</td>
+            <td>{{document.affectation_enseignant.groupe}}</td>
+            <td>{{document.nom}}</td>
+            <td>{{document.file|file_extension}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

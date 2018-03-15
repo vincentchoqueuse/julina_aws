@@ -1,0 +1,155 @@
+{% extends "detail.html" %}
+
+{% block detail_content %}
+<div class="card">
+    <div class="card-header">
+        Etudiant
+        <div class="pull-right">
+            <a href="/admin_etu/profil/update/" class="link_create_update btn btn-default btn-sm" ><i class="fa fa-pencil" aria-hidden="true"></i> Modification</a>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-3">
+                {% if object.photo %}
+                <img class="img-fluid" style="padding: 10px;" src="{{MEDIA_URL}}{{object.photo.url}}" alt="Card image cap">
+                    {% else %}
+                    <i class="fa fa-user-circle fa-5x" aria-hidden="true"></i>
+                    {% endif %}
+                    
+            </div>
+            
+            <div class="col-sm-9">
+                <ul>
+                    <li>Nom/Prenom: {{object}}
+                        <li> Bac+2: {{object.bac2}} ({{object.annee_bac2}})</li>
+                        <li> Bac: {{object.bac}} ({{object.annee_bac}})</li>
+                        <li><i class="fa fa fa-home" aria-hidden="true"></i> {{object.domicile}}, {{object.codepostaldomicile}}, {{object.villedomicile}}, {{object.adresse_ville}}</li>
+                        <li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:{{object.email}}"> {{object.email }}</a></li>
+                        <li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:{{object.email_perso}}"> {{object.email_perso}}</a></li>
+                        <li><i class="fa fa-phone" aria-hidden="true"></i> {{object.telephone}}</li>
+                        <li><i class="fa fa-phone" aria-hidden="true"></i> {{object.telephonemobile}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">Affectations</div>
+    <div class="card-body">
+        <table class="table table-responsive">
+            <thead>
+                <tr >
+                    <th>Promotion</th>
+                    <th class="d-none d-lg-table-cell">Groupes</th>
+                    <th >Moyenne</th>
+                    <th>Liens</th>
+                    <th class="d-none d-lg-table-cell">Active</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for affectation in object.get_affectation_list.all %}
+                <tr>
+                    <td><a href="/admin_etu/affectation_etudiant/{{affectation.pk}}/detail/">{{affectation.promotion}}</a></td>
+                    <td class="d-none d-lg-table-cell">{{affectation.groupe_set.all|join:", "}}</td>
+                    <td>{{affectation.bulletin.moyenne}}</td>
+                    <td>
+                        {% if affectation.get_calendrier %}
+                        <a href="/promotions/calendrier/{{affectation.get_calendrier.pk}}/detail/" class="link_detail btn btn-default btn-sm"><i class="fa fa-calendar" aria-hidden="true"></i></a>
+                        {% endif %}
+                        {% if affectation.promotion.formation.linkedin %}
+                        <a href="{{affectation.promotion.formation.linkedin}}" target="_blank" class="btn btn-default btn-sm"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        {% endif %}
+                        {% if affectation.promotion.formation.facebook %}
+                        <a href="{{affectation.promotion.formation.facebook}}" target="_blank" class="btn btn-default btn-sm"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        {% endif %}
+                    </td>
+                    <td class="d-none d-lg-table-cell">{% if affectation.promotion.active %}
+                        <span class="badge badge-secondary">active</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">Contrat</div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th >Type</th>
+                    <th class="d-none d-lg-table-cell">Entreprise</th>
+                    <th>Etudiant</th>
+                    <th class="d-none d-md-table-cell">Tuteur IUT</th>
+                    <th class="d-none d-lg-table-cell">Tuteur Entreprise</th>
+                    <th class="d-none d-lg-table-cell">Ville</th>
+                    <th class="d-none d-lg-table-cell">CQPM</th>
+                </tr>
+            </thead>
+            <tbody id="contrat_table">
+                
+                {% for contrat in contrat_list %}
+                <tr>
+                    <td>
+                        <a href="../contrat/{{contrat.pk}}/detail/" >{{contrat.get_type_display}}</a>
+                    </td>
+                    <td>{{contrat.entreprise|truncatechars:30}}</td>
+                    <td>{{contrat.affectation.etudiant}}</td>
+                    <td class="d-none d-md-table-cell">{{contrat.tuteur_formation}}</td>
+                    <td class="d-none d-lg-table-cell">{{contrat.tuteur_entreprise}}</th>
+                        <td class="d-none d-lg-table-cell">{{contrat.entreprise.adresse_ville}}</td>
+                        <td class="d-none d-lg-table-cell">{{contrat.cqpm.numero}}</th>
+                            </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+<div class="card">
+    <div class="card-header">Projet Tuteure</div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr >
+                    <th>Intitule</th>
+                    <th>Enseignant</th>
+                    <th>Etudiants</th>
+                    <th class="d-none d-md-table-cell">Salle</th>
+                    <th class="d-none d-md-table-cell">Statut</th>
+                </tr>
+            </thead>
+            <tbody >
+                {% for projet in projet_tuteure_list %}
+                <tr>
+                    <td>
+                        <a href="../projet_tuteure/{{projet.pk}}/detail/">{{projet.intitule|truncatechars:25}}</a>
+                    </td>
+                    <td>{{projet.enseignant}}</td>
+                    <td>
+                        <ul>
+                            {% for affectation in projet.affectation.all %}
+                            <li>{{affectation}}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td class="d-none d-md-table-cell">{{projet.salle}}</td>
+                    <td class="d-none d-md-table-cell">
+                        {% if projet.actif %}
+                        <span class="badge badge-info">Actif</span>
+                        {% else %}
+                        <span class="badge badge-info">Proposition</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

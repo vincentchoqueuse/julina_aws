@@ -1,0 +1,28 @@
+Coucou
+
+<div id="bloodhound">
+    <input class="form-control typeahead" type="text" placeholder="States of USA">
+</div>
+
+<script>
+    
+    
+    var states = new Bloodhound({
+                                
+        datumTokenizer: Bloodhound.tokenizers.whitespace,
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        prefetch: '/entreprises/list.json',
+        });
+
+    states.clearRemoteCache();
+    
+    $("#bloodhound .typeahead").typeahead({
+                                          hint: true,
+                                          highlight: true,
+                                          minLength: 1
+                                          },
+                                          {
+                                          name: 'states',
+                                          source: states
+    });
+</script>

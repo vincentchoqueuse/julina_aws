@@ -1,0 +1,22 @@
+{% extends 'base_1column.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="row justify-content-md-center">
+    <div class="col col-lg-4">
+        <div class="card">
+            <h4 class="card-header">Login Page</h4>
+            <div class="card-body">
+                <form action="" method="post">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <div>
+                    <button type="submit" class="btn btn-primary btn-block" >Login</button>
+                </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

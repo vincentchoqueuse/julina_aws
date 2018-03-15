@@ -1,0 +1,15 @@
+<nav class="nav nav-tabs" >
+    <a class="nav-item nav-link {% if nav_active == 'detail' %}active{% endif %}" href="../detail/" >Détail</a>
+    <a class="nav-item nav-link {% if nav_active == 'fiche_liaison' %}active{% endif %}" href="../fiche_liaison/" >Fiche de Liaison</a>
+    <a class="nav-item nav-link {% if nav_active == 'bulletin' %}active{% endif %}" href="../bulletin/">Bulletin</a>
+    <div>
+        <a class="nav-link dropdown-toggle {% if nav_active == 'entreprise' %}active{% endif %}" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="dropdownMenu1">Entreprise</a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <a class="dropdown-item" href="../entreprise/" >Détail</a>
+            <a class="dropdown-item" href="../contrat/" >Liste des contrats</a>
+        </div>
+    </div>
+    <a class="nav-item nav-link {% if nav_active == 'consigne' %}active{% endif %}" href="../consigne/" >Consigne</a>
+    <a class="nav-item nav-link {% if nav_active == 'calendrier' %}active{% endif %}" href="../calendrier/">Calendrier</a>
+</nav>
+

@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load generic %}
+
+
+{% block sidebar %}
+{% include 'admin_dep/sidebar.html' with departement=object %}
+{% endblock %}
+
+
+{% block breadcrumb %}
+<li class="breadcrumb-item active">Home</li>
+{% endblock %}
+
+{%block content %}
+<nav class="nav nav-tabs" id="myTab" role="tablist">
+    <a class="nav-item nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-expanded="true">Home</a>
+</nav>
+
+<div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="card">
+            <div class="card-header">
+                Dream Team
+            </div>
+            <div class="card-body">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Type</th>
+                            <th>Email</th>
+                            <th>Téléphone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{object.chef}}</td>
+                            <td><span class="badge badge-info">Chef de Département</span></td>
+                            <td>{{object.chef.email}}</td>
+                            <td>{{object.chef.telephone}}</td>
+                        </tr>
+                        {% for administratif in object.administratifs.all %}
+                        <tr>
+                            <td>{{administratif}}</td>
+                            <td><span class="badge badge-info">{{administratif.role}}</span></td>
+                            <td>{{administratif.email}}</td>
+                            <td>{{administratif.telephone}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        Promotions actuelles
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-responsive">
+                            <thead>
+                                <tr >
+                                    <th>Nom</th>
+                                    <th>Responsable</th>
+                                    <th>Email</th>
+                                    <th>Nb etudiants</th>
+                                    <th>Réseaux</th>
+                                </tr>
+                            </thead>
+                            <tbody id="promotion_table">
+                                {% for promotion in promotion_list.all %}
+                                <tr>
+                                    <td>{{promotion}}</td>
+                                    <td>{{promotion.responsable}}</td>
+                                    <td><a href="mailto:{{promotion.responsable.email}}">{{promotion.responsable.email}}</a></td>
+                                    <td>{{promotion.etudiants.count}}</td>
+                                    <td>
+                                        {% if promotion.formation.linkedin %}
+                                        <a href="{{promotion.linkedin}}" target="_blank" class="btn btn-default btn-sm"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                        {% endif %}
+                                        {% if promotion.formation.facebook %}
+                                        <a href="{{promotion.facebook}}" target="_blank" class="btn btn-default btn-sm"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock%}
+

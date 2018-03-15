@@ -1,0 +1,57 @@
+{% extends "detail.html" %}
+{% load generic %}
+
+
+
+
+{% block detail_content %}
+<div class="tab-content" >
+    <div class="card">
+        <div class="card-header">
+            Contacts
+        </div>
+        <div class="card-body">
+            {% include 'entreprises/contrat_trio_list.html' %}
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-header">
+            Evaluation
+        </div>
+        <div class="card-body">
+
+                <table class="table">
+                    <thead>
+                        <tr >
+                            <th>Nom</th>
+                            <th class="d-none d-lg-table-cell">Tuteur</th>
+                            <th>Entreprise</th>
+                            <th class="d-none d-lg-table-cell">Deadline</th>
+                            <th class="d-none d-lg-table-cell">Note</th>
+                            <th class="d-none d-lg-table-cell">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for rapport_tuteur_entreprise in object.get_rapport_tuteur_entreprise_list %}
+                        <tr>
+                            <td><a class="link_detail" href="/entreprises/rapport_tuteur_entreprise/{{rapport_tuteur_entreprise.pk}}/detail/">{{rapport_tuteur_entreprise.nom}}
+                                </td>
+                            <td class="d-none d-lg-table-cell">{{rapport_tuteur_entreprise.contrat.tuteur_entreprise}}</td>
+                            <td>{{rapport_tuteur_entreprise.contrat.entreprise}}</td>
+                            <td class="d-none d-lg-table-cell">{{rapport_tuteur_entreprise.deadline}}</td>
+                            <td class="d-none d-lg-table-cell">{{rapport_tuteur_entreprise.note}}</td>
+                            <td class="d-none d-lg-table-cell">
+                                {% if rapport_tuteur_entreprise.actif %}
+                                <a href="../rapport_tuteur_entreprise/{{rapport_tuteur_entreprise.pk}}/update/" class='link_create_update btn btn-default btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

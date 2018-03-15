@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load generic %}
+
+{% block sidebar %}
+{% include 'admin_etu/sidebar.html' %}
+{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item" ><a href="/admin_etu/profil/">Home</a></li>
+<li class="breadcrumb-item active">{{title}}</li>
+{% endblock %}
+
+
+{%block content %}
+{% include nav_template %}
+<div class="tab-content" id="nav-tabContent">
+    <div class="card">
+        <div class="card-header">{{title}}
+        </div>
+        <div class="card-body">
+            {% include 'entreprises/entreprise_detail.html' %}
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">Liste des contrats
+            {% block header_button %}
+            {% if can_edit %}
+            <div class="pull-right">
+                <a id="bulletin_link" href="../{{object.pk}}/update/" class="link_create_update btn btn-default btn-sm" ><i class="fa fa-plus" aria-hidden="true"></i> </a>
+            </div>
+            {% endif %}
+            {% endblock %}
+        </div>
+        <div class="card-body">
+            {% include 'entreprises/contrat_list.html' with object_list=contrat_list %}
+        </div>
+    </div>
+</div>
+{% endblock %}

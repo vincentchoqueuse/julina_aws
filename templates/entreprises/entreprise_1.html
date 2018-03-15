@@ -1,0 +1,55 @@
+
+<div class="row">
+    <div class="col-sm-6" style="padding: 20px;">
+        <div id="map-canvas" style="height:260px;"></div>
+    </div>
+    <div class="col-sm-6">
+        
+        <ul>
+            <li>Nom: {{object.nom}}</li>
+            <li>Siret: {{object.siret}}</li>
+            <li>Naf: {{object.naf}}</li>
+            <li>Adresse: {{object.adresse_rue}}, {{object.adresse_zip}} {{object.adresse_ville}}</li>
+            <li>Activite: {{object.activite}}</li>
+            <li>Voir dans: <a href="geo:{{object.gps_lat}},{{object.gps_long}}">Google Map</a>, <a href="http://maps.apple.com/?q={{object.gps_lat}},{{object.gps_long}}">Apple Map</a>
+        </ul>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12" >
+        <div class="card">
+            <div class="card-header">
+                Contrats
+            </div>
+            <div class="card-body">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th >Année</th>
+                            <th>Formation</th>
+                            <th >Etudiant</th>
+                            <th >Tuteur IUT</th>
+                            <th >Tuteur Entreprise</th>
+                        </tr>
+                    </thead>
+                    
+                    {% for contrat in object.contrat_set.all %}
+                    <tr>
+                        <td>{{contrat.affectation.promotion.annee}}</td>
+                        <td>{{contrat.affectation.promotion.formation}}</td>
+                        <td>{{contrat.affectation.etudiant}} </td>
+                        <td>{{contrat.tuteur_formation}} </td>
+                        <td>{{contrat.tuteur_entreprise}} </td>
+                    </tr>
+                    {% endfor %}
+                    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+</div>
+

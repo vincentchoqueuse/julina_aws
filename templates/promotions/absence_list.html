@@ -1,0 +1,40 @@
+<table class="table">
+    <thead>
+        <tr >
+            <th>Etudiant</th>
+            <th>Date</th>
+            <th>Justification</th>
+            {% if can_update %}
+            <th class="d-none d-lg-table-cell">Action</th>
+            {% endif %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for absence in object_list %}
+        <tr>
+            <td>
+                <a class="link_detail" href="/promotions/absence/{{absence.pk}}/detail/">{{absence.affectation_etudiant.etudiant}}</a>
+            </td>
+            
+            <td>Du {{absence.debut|date:"d M, Y"}} au {{absence.fin|date:"d M, Y"}}</td>
+            <td>
+                {% if absence.statut == "J" %}
+                <span class="badge badge-info">Justifié</span>
+                {% endif %}
+                {% if absence.statut == "NJ" %}
+                <span class="badge badge-danger">Non justifié</span>
+                {% endif %}
+            </td>
+            <td class="d-none d-lg-table-cell">
+                {% if can_update%}
+                    <a href="./{{absence.pk}}/update/" class="link_create_update btn btn-default btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    {% if can_delete%}
+                    <a href="./{{absence.pk}}/delete/" class="link_create_update btn btn-default btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    {% endif %}
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+

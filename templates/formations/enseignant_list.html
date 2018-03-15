@@ -1,0 +1,38 @@
+{% load generic %}
+
+<table class="table">
+    <thead>
+        <tr >
+            <th>Nom/Prenom</th>
+            <th class="d-none d-lg-table-cell">Département</th>
+            {% if user.administratif or user.enseignant %}
+            <th>Telephone</th>
+            {% endif%}
+            <th class="d-none d-lg-table-cell">Mail</th>
+            <th class="d-none d-lg-table-cell">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for enseignant in object_list %}
+        <tr>
+            <td><a class="link_detail" href="/formations/enseignant/{{enseignant.pk}}/detail/">{{enseignant}}</a></td>
+            <td class="d-none d-lg-table-cell">{{enseignant.departement_enseignant.all|join:", "}}
+            </td>
+            {% if user.administratif or user.enseignant %}
+            <td>{% if enseignant.telephonemobile %}
+                <a href="tel:{{enseignant.telephonemobile}}">{{enseignant.telephonemobile}}</a>
+                {% endif %}
+            </td>
+            {% endif %}
+            <td class="d-none d-lg-table-cell">{% if enseignant.email %}
+                <a href="mailto:{{enseignant.email}}">{{enseignant.email}}</a>
+                {% endif %}
+            </td>
+            <td class="d-none d-lg-table-cell">
+                <a href="./{{enseignant.pk}}/update/" class='link_create_update btn btn-default btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a>
+                <a href="./{{enseignant.pk}}/delete/" class='link_delete btn btn-default btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a></td>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,38 @@
+<h2>Documents</h2>
+<table class="table mytable">
+    <thead>
+        <tr>
+            <th class="w-10"></th>
+            <th class="w-20">Module</th>
+            <th class="w-20">Nom</th>
+            <th class="w-20">Enseignant</th>
+            <th class="w-20">Date</th>
+            <th class="w-20">Audience</th>
+            {% if actions %}
+            <th class="w-20">Action</th>
+            {% endif %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for object in objects %}
+        <tr>
+            <td><a href="{{MEDIA_URL}}{{object.file.url}}"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+            <td><a href="{% url 'modules_detail' pk=object.module.pk%}">{{object.module.code_scodoc}}</a></td>
+            <td>{{object.nom}}</td>
+            <td ><a href="{% url 'enseignants_detail' pk=object.enseignant.pk %}">{{object.enseignant.nom}} {{object.enseignant.prenom}}</a></td>
+            <td>{{object.modification}}</td>
+            <td>
+                {% for groupe in object.audience.all %}
+                    {{groupe.nom}}{% if not forloop.last %},{% endif %}
+                {% endfor %}
+            </td>
+            {% if actions %}
+                <td>
+                    <a href="{% url 'documents_update' pk=object.pk%}" class="btn btn-secondary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a href="{% url 'documents_delete' pk=object.pk%}" class="btn btn-secondary btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                </td>
+            {% endif %}
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>

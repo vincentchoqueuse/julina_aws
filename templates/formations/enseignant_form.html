@@ -1,0 +1,18 @@
+{% extends "formations/admin.html" %}
+
+{% load bootstrap4 %}
+
+{% block menu_administration %}active{% endblock %}
+{% block sidebar_enseignants %}active{%endblock%}
+
+{%block main_content %}
+<h2>{{title}} Enseignant </h2>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button type="submit" class="btn btn-secondary">
+        <i class="fa fa-floppy-o" aria-hidden="true"></i> Sauvegarder
+    </button>
+</form>
+{% endblock %}
+

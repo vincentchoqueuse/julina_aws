@@ -1,0 +1,28 @@
+<nav class="nav nav-tabs">
+    <div>
+        <a class="nav-link dropdown-toggle {% if nav_active == 'entreprise' %}active{% endif %}" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="dropdownMenu1">Entreprise</a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <a class="dropdown-item" href="../entreprise/">Entreprise</a>
+            <a class="dropdown-item" href="../entreprise_carte/">Cartes</a>
+            <a class="dropdown-item" href="../tuteur_entreprise/">Tuteurs</a>
+        </div>
+    </div>
+    <div>
+        <a class="nav-link dropdown-toggle {% if nav_active == 'formation' %}active{% endif %}" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="dropdownMenu2">Centre de Formation</a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <a class="dropdown-item" href="../formation/">Formations</a>
+            <a class="dropdown-item" href="../promotion/">Promotions</a>
+            <a class="dropdown-item" href="../etudiant/">Etudiants</a>
+            <a class="dropdown-item" href="../enseignant/">Enseignants</a>
+        </div>
+    </div>
+    <div>
+        <a class="nav-link dropdown-toggle {% if nav_active == 'rapport' %}active{% endif %}" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="dropdownMenu3">Rapports</a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu3">
+            <a class="dropdown-item" href="../rapport_tuteur_formation/">CR Tuteur Formation</a>
+            <a class="dropdown-item" href="../rapport_tuteur_entreprise/">CR Tuteur Entreprise</a>
+        </div>
+    </div>
+
+
+</nav>

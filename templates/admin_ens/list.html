@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load generic %}
+
+{% block sidebar %}
+{% include 'admin_ens/sidebar.html' %}
+{% endblock %}
+
+{% block breadcrumb %}
+{% include breadcrumb_template %}
+{% endblock %}
+
+{%block content %}
+{% include nav_template %}
+<div class="tab-content" id="nav-tabContent">
+    <div class="card">
+        <div class="card-header">{{title}} ({{object_list|length}} résultats)
+            <div class="pull-right">
+            {% block header_button %}
+            {% if can_create %}
+                <a id="bulletin_link" href="../{{object.pk}}/update/" class="link_create_update btn btn-default btn-sm" ><i class="fa fa-plus" aria-hidden="true"></i> </a>
+            {% endif %}
+            {% endblock %}
+            </div>
+        </div>
+        <div class="card-body">
+            {% include list_template %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+

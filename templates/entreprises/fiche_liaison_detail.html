@@ -1,0 +1,61 @@
+{% load generic %}
+
+<div class="date_modification">{{object.date_modification}}</div>
+
+<dl class='row'>
+    <dt class='col-sm-3'>Intitule</dt>
+    <dd class='col-sm-9'>{{object.intitule}}</dd>
+</dl>
+
+<dl class='row'>
+    <dt class='col-sm-3'>Entreprise</dt>
+    <dd class='col-sm-9'>{{object.contrat.entreprise}} ({{object.contrat.entreprise.adresse_zip}} {{object.contrat.entreprise.adresse_ville}} )</dd>
+</dl>
+
+<dl class='row'>
+    <dt class='col-sm-3'>Adresse Entreprise</dt>
+    <dd class='col-sm-9'>{{object.adresse_stage}}</dd>
+</dl>
+
+<dl class='row'>
+    <dt class='col-sm-3'>Nom Tuteur</dt>
+    <dd class='col-sm-9'>{{object.contrat.tuteur_entreprise}}</dd>
+</dl>
+<dl class='row'>
+    <dt class='col-sm-3'>Fonction Tuteur</dt>
+    <dd class='col-sm-9'>{{object.fonction_tuteur}}</dd>
+</dl>
+<dl class='row'>
+    <dt class='col-sm-3'>Mail Tuteur</dt>
+    <dd class='col-sm-9'>{{object.contrat.tuteur_entreprise.email}}</dd>
+</dl>
+<dl class='row'>
+    <dt class='col-sm-3'>Telephone Tuteur</dt>
+    <dd class='col-sm-9'>{{object.telephone_tuteur}}</dd>
+</dl>
+
+<dl class='row'>
+    <dt class='col-sm-3'>Programme</dt>
+    <dd class='col-sm-9'>{{object.programme|as_markdown}}</dd>
+</dl>
+
+<dl class='row'>
+    <dt class='col-sm-3'>Impression</dt>
+    <dd class='col-sm-9'>{{object.impression|as_markdown}}</dd>
+</dl>
+
+<dl class='row'>
+    <dt class='col-sm-3'>Problèmes eventuels</dt>
+    <dd class='col-sm-9'>{{object.problemes|as_markdown}}</dd>
+</dl>
+
+<dl class='row'>
+    <dt class='col-sm-3'>Service</dt>
+    <dd class='col-sm-9'>{{object.service}}</dd>
+</dl>
+
+<dl class='row'>
+    <dt class='col-sm-3'>Date pour visite</dt>
+    <dd class='col-sm-9'>{{object.dates_visite}}</dd>
+</dl>
+

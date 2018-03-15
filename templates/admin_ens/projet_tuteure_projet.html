@@ -1,0 +1,19 @@
+{% extends "admin_ens/projet_tuteure_base.html" %}
+
+{%block content %}
+{% include "admin_ens/projet_tuteure_nav.html" with menu="projet" %}
+
+<div class="tab-content" id="nav-tabContent">
+    <div class="card">
+        <div class="card-header">Description
+            <div class="pull-right">
+                <a href="/admin_ens/projet_tuteure/{{object.pk}}/update/" class="link_create_update btn btn-default btn-sm" ><i class="fa fa-pencil" aria-hidden="true"></i> Modification</a>
+            </div>
+        </div>
+        <div class="card-body">
+            {% include "projets/projet_tuteure_detail.html" %}
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

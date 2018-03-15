@@ -1,0 +1,30 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Responsable</th>
+            <th>Annee</th>
+            <th>Sem</th>
+            <th>Groupe</th>
+            {% if is_raf %}
+            <th class="d-none d-lg-table-cell">Action</th>
+            {% endif %}
+        </tr>
+    </thead>
+    <tbody >
+        {% for calendrier_hebdomadaire in object_list %}
+        <tr>
+            <td><a href="/promotions/etudiant/{{calendrier_hebdomadaire.responsable.etudiant.pk}}/detail/" class="link_detail">{{calendrier_hebdomadaire.responsable}}</a></td>
+            <td>{{calendrier_hebdomadaire.annee}}</td>
+            <td>{{calendrier_hebdomadaire.num_semaine}}</td>
+            <td class="calendrier_groupe">{{calendrier_hebdomadaire.calendrier.groupe}}</td>
+            {% if is_raf %}
+            <td class="d-none d-lg-table-cell">
+                <a href="../calendrier_hebdomadaire/{{calendrier_hebdomadaire.pk}}/update/" class='link_create_update btn btn-default btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a>
+                <a href="../calendrier_hebdomadaire/{{calendrier_hebdomadaire.pk}}/delete/" class='link_create_update btn btn-default btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a>
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+        
+    </tbody>
+</table>

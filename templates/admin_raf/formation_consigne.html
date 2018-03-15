@@ -1,0 +1,65 @@
+
+{% extends "detail.html" %}
+{% load generic %}
+
+
+{%block detail_content %}
+<div class="card">
+    <div class="card-header">Consignes</div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Consigne</th>
+                    <th>Type</th>
+                    <th>Audience</th>
+                    <th>Fichier</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody >
+                <tr>
+                    <td><a href="/formations/{{object.pk}}/consigne_contrat/detail/" class="link_detail">
+                        Consigne</a></td>
+                    <td>Contrat</td>
+                    <td>Tuteurs, Etudiant</td>
+                    <td>
+                        {% if object.grille_contrat %}
+                        <a href="{{object.grille_contrat.url}}" class="btn btn-default btn-sm"><i class="fa fa-cloud-download" aria-hidden="true"></i></a>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="../consigne_contrat/update/" class="link_create_update btn btn-default btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="/formations/{{object.pk}}/consigne_projet/detail/" class="link_detail">
+                        Consigne</a></td>
+                    <td>Projet Tuteuré</td>
+                    <td>Enseignant, Etudiant</td>
+                    <td>
+                        {% if object.grille_projet %}
+                        <a href="{{object.grille_projet.url}}" class="btn btn-default btn-sm"><i class="fa fa-cloud-download" aria-hidden="true"></i></a>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="../consigne_projet/update/" class="link_create_update btn btn-default btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="/formations/{{object.pk}}/consigne_feuille_emargement/detail/" class="link_detail">
+                        Consigne</a></td>
+                    <td> Emargement</td>
+                    <td>Enseignant, Etudiant</td>
+                    <td></td>
+                    <td>
+                        <a href="../consigne_feuille_emargement/update/" class="link_create_update btn btn-default btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{%endblock %}
+
+

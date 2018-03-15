@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-sm-3">
+        {% if object.photo %}
+        <img class="img-fluid" style="padding: 10px;" src="{{MEDIA_URL}}{{object.photo.url}}" alt="Card image cap">
+            {% else %}
+            <i class="fa fa-user-circle fa-5x" aria-hidden="true"></i>
+            {% endif %}
+            
+            </div>
+    
+    <div class="col-sm-9">
+        <ul>
+            <li>Nom/Prenom: {{object}}
+                <li>Date de Naissance: {{object.date_naissance}} </li>
+                <li><i class="fa fa fa-home" aria-hidden="true"></i> {{object.domicile}}, {{object.villedomicile}}, {{object.codepostaldomicile}}</li>
+                <li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:{{object.email_perso }}"> {{object.email_perso }}</a></li>
+                <li><i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:{{object.telephonemobile}}">{{object.telephonemobile}}</a></li>
+                <li>Bac+2: {{object.bac2}} ({{object.annee_bac2}})</li>
+                <li>Bac: {{object.bac}} ({{object.annee_bac}})</li>
+                </ul>
+        
+    </div>
+</div>
+
+<h5>Experiences Professionnelles</h5>
+
+
+{% for affectation in object.affectation_set.all %}
+    {% for contrat in affectation.contrat_set.all %}
+    <dl class="row">
+        <dt class="col-sm-2">{{affectation.promotion.annee}}</dt>
+        <dd class="col-sm-10">
+            <p>Entreprise {{contrat.entreprise}} (Tuteur Entreprise: <a href="mailto: {{contrat.tuteur_entreprise.email}}">{{contrat.tuteur_entreprise}}</a>,Tuteur IUT: <a href="mailto:{{contrat.tuteur_formation.email}}">{{contrat.tuteur_formation}}</a>) </p>
+            
+            <p>Programme: {{contrat.fiche_liaison.programme}}</p>
+        </dd>
+    </dl>
+    {% endfor %}
+{% endfor %}
+
+<h5>Formation</h5>
+
+{% for affectation in object.affectation_set.all %}
+<dl class="row">
+    <dt class="col-sm-2">{{affectation.promotion.annee}}</dt>
+    <dd class="col-sm-10">
+        <p>Groupes: {{affectation.groupe_set.all|join:", "}}</p>
+        <p>Bulletin: Moyenne {{object.bulletin.moyenne}}/20</p>
+    </dd>
+</dl>
+{% endfor %}

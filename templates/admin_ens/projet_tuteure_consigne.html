@@ -1,0 +1,13 @@
+{% extends "admin_ens/projet_tuteure_base.html" %}
+
+{%block content %}
+{% include "admin_ens/projet_tuteure_nav.html" with menu="consigne" %}
+<div class="tab-content" id="nav-tabContent">
+        <div class="card">
+            <div class="card-header">Consignes</div>
+            <div class="card-body">
+                {% include "formations/consigne.html" with object=object.promotion.formation.consigne_projet file=grille_projet %}
+            </div>
+        </div>
+</div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "detail.html" %}
+
+{% block detail_content %}
+<div class="card">
+    <div class="card-header">
+        Tuteur Entreprise
+        <div class="pull-right">
+            <a href="/admin_tut/profil/update/" class="link_create_update btn btn-default btn-sm" ><i class="fa fa-pencil" aria-hidden="true"></i> Modification</a>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-3">
+                {% if object.photo %}
+                <img class="img-fluid" style="padding: 10px;" src="{{MEDIA_URL}}{{object.photo.url}}" alt="Card image cap">
+                    {% else %}
+                    <i class="fa fa-user-circle fa-5x" aria-hidden="true"></i>
+                    {% endif %}
+                    
+            </div>
+            
+            <div class="col-sm-9">
+                <ul>
+                    <li>Nom/Prenom: {{object}}
+                    <li>Fonction: {{object.role}}</li>
+                    <li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:{{object.email}}"> {{object.email }}</a></li>
+                    <li><i class="fa fa-phone" aria-hidden="true"></i> {{object.telephonemobile}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        Liste des contrats
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Etudiant</th>
+                    <th class="d-none d-lg-table-cell">Type</th>
+                    <th class="d-none d-lg-table-cell">Entreprise</th>
+                    <th class="d-none d-lg-table-cell">Formation</th>
+                    <th class="d-none d-md-table-cell">Tuteur</th>
+                    <th class="d-none d-lg-table-cell">Ville</th>
+                    <th class="d-none d-lg-table-cell">CQPM</th>
+                </tr>
+            </thead>
+            <tbody id="contrat_table">
+                {% for contrat in request.user.tuteur_entreprise.contrat_set.all %}
+                <tr>
+                    <td><a href="../contrat/{{contrat.pk}}/detail/">{{contrat.affectation.etudiant}}</a></td>
+                    <td class="d-none d-lg-table-cell">{{contrat.get_type_display}}</td>
+                    <td class="d-none d-lg-table-cell">{{contrat.entreprise|truncatechars:30}}</td>
+                    <td class="d-none d-lg-table-cell">{{contrat.affectation.promotion.formation}}</td>
+                    <td class="d-none d-md-table-cell">{{contrat.tuteur_formation}}</td>
+                    <td class="d-none d-lg-table-cell">{{contrat.entreprise.adresse_ville}}</td>
+                    <td class="d-none d-lg-table-cell">{{contrat.cqpm.numero}}</th>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+

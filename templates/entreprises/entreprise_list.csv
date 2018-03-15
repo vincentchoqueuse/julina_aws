@@ -1,0 +1,3 @@
+entreprise;CP;addesse
+{% for entreprise in object_list %}{{entreprise.nom|safe }}; {{entreprise.adresse_zip}}; {{entreprise.adresse_ville|safe }}
+{% endfor %}

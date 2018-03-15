@@ -1,0 +1,34 @@
+<dl class='row'>
+    <dt class='col-sm-3'>Promotion</dt>
+    <dd class='col-sm-9'>{{object.formation}} {{object.annee}}</dd>
+</dl>
+
+<dl class='row'>
+    <dt class='col-sm-3'>Responsable</dt>
+    <dd class='col-sm-9'>{{object.responsable}}</dd>
+</dl>
+<dl class='row'>
+    <dt class='col-sm-3'>Rentree</dt>
+    <dd class='col-sm-9'>{{object.rentree}}</dd>
+</dl>
+
+<h3>Etudiants</h3>
+
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Etudiant</th>
+            <th>Parcours</th>
+            <th>Moyenne</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for affectation in object.promotion_set.all %}
+        <tr>
+            <td>{{affectation.etudiant}}</td>
+            <td>{{affectation.parcours}}</td>
+            <td>{{affectation.bulletin.moyenne}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

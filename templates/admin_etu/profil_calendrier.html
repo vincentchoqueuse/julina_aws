@@ -1,0 +1,6 @@
+{% extends "list.html" %}
+
+{% block header_button %}
+<a href="/formations/{{object_list.0.calendrier.promotion.formation.pk}}/consigne_feuille_emargement/detail/" class="link_detail btn btn-default btn-sm"><i class="fa fa-info" aria-hidden="true"></i> Consignes</a>
+{% endblock%}
+

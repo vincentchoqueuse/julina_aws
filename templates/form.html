@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load generic %}
+{% load bootstrap4 %}
+
+{% block sidebar %}
+{% include sidebar_template %}
+{% endblock %}
+
+{% block breadcrumb %}
+{% include breadcrumb_template %}
+{% endblock %}
+
+{%block content %}
+{% include nav_template %}
+<div class="tab-content" >
+    <div class="card">
+        <div class="card-header">Export CSV
+        </div>
+        <div class="card-body">
+            <form method="POST">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <div class="pull-right">
+            <button type="submit" class="btn btn-secondary">Submit</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

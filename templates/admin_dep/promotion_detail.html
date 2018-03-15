@@ -1,0 +1,250 @@
+{% extends "base.html" %}
+{% load generic %}
+
+{%block javascript%}
+<script>
+{% include 'entreprises/contrat_list_map.js' with object_list=object.get_contrat_list.all %}
+</script>
+<script>
+    $(function() {
+      $("#student_list").click(function(){
+               string=""
+               $(".affectation_nom").each(function( index ) {
+                                          
+                  if (!$(this).closest("tr").hasClass("hidden"))
+                      {
+                      string=string+$(this).text()+"\n";
+                      }
+                });
+            alert(string);
+            });
+      $(".calendrier_radio").on("change", function() {
+        id=$(this).attr("id");
+        $(".calendrier").addClass("hidden");
+        $("#table_"+id).removeClass("hidden");
+        }
+         );
+      
+      
+      });
+    
+</script>
+{%endblock%}
+
+{% block sidebar %}
+{% include 'admin_dep/sidebar.html' with departement=object.formation.departement %}
+{% endblock %}
+
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="{% url 'admin_dep_departement_detail' pk=object.formation.departement.pk %}">Home</a></li>
+<li class="breadcrumb-item active">Promotion {{object.annee}}</li>
+{% endblock %}
+
+{%block content %}
+<nav class="nav nav-tabs" id="myTab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-groupe-tab" data-toggle="tab" href="#nav-groupe" role="tab" aria-controls="nav-groupe" aria-expanded="true">Groupes</a>
+    <a class="nav-item nav-link" id="nav-enseignant-tab" data-toggle="tab" href="#nav-enseignant" role="tab" aria-controls="nav-enseignant">Enseignants</a>
+    <a class="nav-item nav-link" id="nav-etudiant-tab" data-toggle="tab" href="#nav-etudiant" role="tab" aria-controls="nav-etudiant">Etudiants</a>
+    <a class="nav-item nav-link" id="nav-calendrier-tab" data-toggle="tab" href="#nav-calendrier" role="tab" aria-controls="nav-calendrier">Calendriers</a>
+</nav>
+
+
+<div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-groupe" role="tabpanel" aria-labelledby="nav-groupe-tab">
+        
+        <div class="card">
+            <div class="card-header">
+                Parcours
+            </div>
+            <div class="card-body">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Type</th>
+                            <th>Nb Etu</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="parcours_table">
+                        {% include 'admin_raf/parcours_list_2.html' with promotion=object %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="card-header">
+                Groupes
+            </div>
+            <div class="card-body">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Type</th>
+                            <th>Nb Etu</th>
+                        </tr>
+                    </thead>
+                    <tbody id="groupe_table">
+                        {% for groupe in object.groupe_set.all %}
+                        <tr>
+                            <td><a href="/promotions/groupe/{{groupe.pk}}/detail/" class="link_detail">{{groupe.nom}}</a></td>
+                            <td>{{groupe.get_type_display}}</td>
+                            <td>{{groupe.affectations.all|length}}</td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        
+    </div>
+    
+    <div class="tab-pane fade" id="nav-enseignant" role="tabpanel" aria-labelledby="nav-enseignant-tab">
+        
+        <div class="card">
+            <div class="card-header">
+                Affectation Enseignant
+                <div class="pull-right">
+                    <a class="link_create_update btn btn-default btn-sm"  href="/admin_raf/{{formation.pk}}/promotion/{{promotion.pk}}/affectation_enseignant/create/" ><i class="fa fa-plus" aria-hidden="true"></i> Enseignant</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Module</th>
+                            <th>Intitule</th>
+                            <th>Groupe</th>
+                            <th>Enseignant</th>
+                            <th>Nb heures</th>
+                        </tr>
+                    </thead>
+                    <tbody id="affectation_enseignant_table">
+ 
+                        
+                        {% for affectation in object.get_affectation_enseignant_list %}
+                        <tr>
+                            <td><a href="/formations/module/{{affectation.module.pk}}/detail/" class ="link_detail">{{affectation.module.code_scodoc}}</a></td>
+                            <td>{{affectation.module.intitule|truncatechars:30}}</td>
+                            <td class="groupe">{{affectation.groupe}}</td>
+                            <td>{{affectation.enseignant}}</td>
+                            <td>{{affectation.nb_heures}}</td>
+                        </tr>
+                        {% endfor %}
+                        
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="tab-pane fade" id="nav-calendrier" role="tabpanel" aria-labelledby="nav-calendrier-tab">
+        
+        <div class="card">
+            <div class="card-header">Calendriers</div>
+            <div class="card-body">
+                <div class="pull-right" style="padding-bottom: 10px;">
+                    Groupes:
+                    <div class="btn-group" data-toggle="buttons">
+                        {% for calendrier in object.calendrier_set.all %}
+                        <label class="btn btn-default {% if forloop.first %}active{% endif%}">
+                            <input type="radio" name="options" id="{{calendrier.pk}}" autocomplete="off" class="calendrier_radio" {% if forloop.first %}checked{% endif%}> {{calendrier.groupe}}
+                        </label>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                
+                {% for calendrier in object.calendrier_set.all  %}
+                <div id="table_{{calendrier.pk}}" class="calendrier {% if not forloop.first %}hidden{% endif%}">
+                <table class="table table-responsive ">
+                    <thead>
+                        <tr>
+                            <th>Groupe</th>
+                            <th>Annee</th>
+                            <th>Sem</th>
+                            <th>Responsable</th>
+                        </tr>
+                    </thead>
+                    <tbody id="calendrier_table">
+                        {% for calendrier_hebdomadaire in calendrier.calendrier_hebdomadaire_set.all %}
+                        <tr>
+                            <td class="calendrier_groupe">{{calendrier_hebdomadaire.calendrier.groupe}}</td>
+                            <td>{{calendrier_hebdomadaire.annee}}</td>
+                            <td>{{calendrier_hebdomadaire.num_semaine}}</td>
+                            <td>{{calendrier_hebdomadaire.responsable}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    
+    
+    <div class="tab-pane fade" id="nav-etudiant" role="tabpanel" aria-labelledby="nav-etudiant-tab">
+    
+        <div class="card">
+            <div class="card-header">
+                Affectation Etudiants
+                <div class="pull-right">
+                <button id="student_list" class="btn btn-default btn-sm"><i class="fa fa-th-list" aria-hidden="true"></i> list</button>
+                </div>
+            </div>
+            <div class="card-body">
+        
+                <div class="pull-right" style="padding-bottom: 10px;">
+                    Groupe
+                    <select class="custom-select" id="select_groupe">
+                        <option selected>Tous</option>
+                        {% for groupe in object.groupe_set.all %}
+                        <option >{{groupe}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+        
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Photo</th>
+                            <th>Nom</th>
+                            <th>Pedigree</th>
+                            <th>Parcours</th>
+                            <th>Groupes</th>
+                            <th>Moyenne</th>
+                        </tr>
+                    </thead>
+                    <tbody id="affectation_etudiant_table">
+                        {% for affectation in object.promotion_set.all %}
+                        <tr>
+                            <td>
+                                {% if affectation.etudiant.photo %}
+                                <img class="img_avatar mx-auto d-block" src="{{MEDIA_URL}}{{affectation.etudiant.photo.url}}" alt="Card image cap">
+                                    {% else %}
+                                    <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i>
+                                    {% endif %}
+                                    </td>
+                            <td ><a href="/promotions/affectation_etudiant/{{affectation.pk}}/detail/" class="link_detail affectation_nom">{{affectation.etudiant}}</a></td>
+                            <td>{{affectation.etudiant.bac2}}</td>
+                            <td>{{affectation.parcours}}</td>
+                            <td class="groupe">{{affectation.groupe_set.all|join:", "}}</td>
+                            <td>{{affectation.bulletin.moyenne}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

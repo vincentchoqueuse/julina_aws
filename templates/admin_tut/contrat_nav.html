@@ -1,0 +1,12 @@
+<nav class="nav nav-tabs">
+    <a class="nav-item nav-link {% if nav_active == 'detail' %}active{% endif %}" href="../detail/">Détail</a>
+    <div>
+        <a class="nav-link dropdown-toggle {% if nav_active == 'fiche' %}active{% endif %}" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="dropdownMenu2">Fiches de Liaison</a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <a class="dropdown-item" href="../fiche_liaison/">Fiche Etudiant</a>
+            <a class="dropdown-item" href="../rapport_tuteur_formation/">Fiche Tuteur Formation</a>
+        </div>
+    </div>
+    <a class="nav-item nav-link {% if nav_active == 'calendrier_hebdomadaire' %}active{% endif %}" href="../calendrier_hebdomadaire/">Calendrier</a>
+    <a class="nav-item nav-link {% if nav_active == 'formation' %}active{% endif %}" href="../formation/">Formation</a>
+</nav>

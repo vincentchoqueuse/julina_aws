@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load generic %}
+
+
+{% block sidebar %}
+{% include 'admin_ens/sidebar.html' with raf=object %}
+{% endblock %}
+
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="/admin_ens/profil/">Home</a></li>
+<li class="breadcrumb-item active">{{formation}}</li>
+{% endblock %}
+

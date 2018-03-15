@@ -1,0 +1,47 @@
+<dl class='row'>
+    <dt class='col-sm-3'>Formation</dt>
+    <dd class='col-sm-9'>{{object.formation}}</dd>
+</dl>
+
+<dl class='row'>
+    <dt class='col-sm-3'>Numero</dt>
+    <dd class='col-sm-9'>UE {{object.numero}}</dd>
+</dl>
+<dl class='row'>
+    <dt class='col-sm-3'>Intitule</dt>
+    <dd class='col-sm-9'>{{object.intitule}}</dd>
+</dl>
+<dl class='row'>
+    <dt class='col-sm-3'>Volume Horaire</dt>
+    <dd class='col-sm-9'>{{object.nb_heures}}</dd>
+</dl>
+<dl class='row'>
+    <dt class='col-sm-3'>Nombre ECTS</dt>
+    <dd class='col-sm-9'>{{object.nb_ects}}</dd>
+</dl>
+
+<dl class='row'>
+    <dt class='col-sm-3'>Coefficient</dt>
+    <dd class='col-sm-9'>{{object.coefficient}}</dd>
+</dl>
+
+<h3>Modules</h3>
+
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Intitule</th>
+            <th>Coefficient</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for module in object.module_set.all %}
+        <tr>
+            <td>{{module.code_scodoc}}</td>
+            <td>{{module.intitule}}</td>
+            <td>{{module.coefficient}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

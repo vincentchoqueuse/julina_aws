@@ -1,0 +1,30 @@
+
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th >Nom / Prénom</th>
+            <th >Entreprise</th>
+            <th >Poste</th>
+            <th >email</th>
+            <th> Téléphone</th>
+            <th >Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for tuteur in object_list %}
+        <tr>
+            <td><a href="/entreprises/tuteur/{{tuteur.pk}}/detail/" class='link_detail'>{{ tuteur.nom }} {{ tuteur.prenom }}</a></td>
+            <td>{{tuteur.entreprises.all|join:","}}</td>
+            <td>{{ tuteur.poste}}</td>
+            <td><a href="mailto:{{ tuteur.email}}">{{tuteur.email}}</a></td>
+            <td>{{ tuteur.telephonemobile}}</td>
+            <td>
+                <a href="./{{tuteur.pk}}/update/" class='link_create_update btn btn-default btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a>
+                <a href="./{{tuteur.pk}}/delete/" class='link_delete btn btn-default btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+

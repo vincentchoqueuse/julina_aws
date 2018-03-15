@@ -1,0 +1,81 @@
+<div class="cv">
+        
+        <div class="row">
+            <div class="col-sm-2">
+                {% if etudiant.photo %}
+                <img class="img_avatar_large mx-auto d-block" src="{{MEDIA_URL}}{{etudiant.photo.url}}" alt="Card image cap">
+                    {% else %}
+                    <i class="fa fa-user-circle fa-5x" aria-hidden="true"></i>
+                    {% endif %}
+                    </div>
+            <div class="col-sm-5 ml-md-auto">
+                <ul class="profile_info">
+                    <li>Date de Naissance: {{etudiant.date_naissance}} </li>
+                    <li><i class="fa fa fa-home" aria-hidden="true"></i> {{etudiant.domicile}}, {{etudiant.villedomicile}}, {{etudiant.codepostaldomicile}}</li>
+                    <li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:{{etudiant.email_perso }}"> {{etudiant.email_perso }}</a></li>
+                    <li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:{{etudiant.email }}"> {{etudiant.email }}</a></li>
+                    <li><i class="fa fa-phone" aria-hidden="true"></i> {{etudiant.telephonemobile}}</li>
+                    
+                </ul>
+            </div>
+        </div>
+
+        <h3>Formation Académique</h3>
+
+        {% for affectation in etudiant.affectation_set.all %}
+        <dl class="row">
+            <dt class="col-sm-2">{{affectation.promotion.annee}}</dt>
+            <dd class="col-sm-10">
+                Formation {{affectation.promotion.formation}}, Parcours {{affectation.parcours}}, Département {{affectation.promotion.formation.departement}},  {{affectation.promotion.formation.departement.etablissement}}
+            </dd>
+        </dl>
+        {% endfor %}
+        <dl class="row">
+            <dt class="col-sm-2">{{etudiant.annee_bac2}} </dt>
+            <dd class="col-sm-10">Diplôme {{etudiant.bac2}}</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">{{etudiant.annee_bac}} </dt>
+            <dd class="col-sm-10">Baccalaureat {{etudiant.bac}}</dd>
+        </dl>
+
+        <h3>Experiences Professionnelles</h3>
+
+        {% for affectation in etudiant.affectation_set.all %}
+        {% for contrat in affectation.contrat_set.all %}
+        <dl class="row">
+            <dt class="col-sm-2">{{affectation.promotion.annee}}</dt>
+            <dd class="col-sm-10">
+                <p>Entreprise {{contrat.entreprise}} (Tuteur Entreprise: <a href="mailto: {{contrat.tuteur_entreprise.email}}">{{contrat.tuteur_entreprise}}</a>,Tuteur IUT: <a href="mailto:{{contrat.tuteur_formation.email}}">{{contrat.tuteur_formation}}</a>) </p>
+                
+                <p>Programme: {{contrat.fiche_liaison.programme}}</p>
+            </dd>
+        </dl>
+        {% endfor %}
+        {% endfor %}
+
+        <h3>Projet Académique</h3>
+
+        {% for affectation in etudiant.affectation_set.all %}
+
+        {% for projet in affectation.projet_tuteure_set.all %}
+        <dl class="row">
+            <dt class="col-sm-2">{{affectation.promotion.annee}}</dt>
+            <dd class="col-sm-10">Intitulé: {{projet.intitule}}
+                <ul>
+                    <li>Equipe: {% for affectation_temp in projet.affectation.all %}
+                        {{affectation_temp.etudiant}}, {% endfor %}</li>
+                    <li>Tuteur IUT: <a href="mailto:{{projet.enseignant.email}}">{{projet.enseignant}}</a></li>
+
+                    
+                </ul>
+                
+            </dd>
+        </dl>
+        {% endfor %}
+        {% endfor %}
+</div>
+
+
+
+

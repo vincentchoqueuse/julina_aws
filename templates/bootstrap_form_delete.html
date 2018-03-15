@@ -1,0 +1,10 @@
+{% load bootstrap4 %}
+{% csrf_token %}
+<p>Etes vous sur de vouloir supprimer l'objet {{object}} </p>
+<p>La suppression de l'object impactera les objets suivants<p>
+
+<ul>
+    {% for child in object.get_related_object %}
+    <li>Objet {{child}} </li>
+    {% endfor %}
+</ul>

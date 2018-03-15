@@ -1,0 +1,32 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Fichier</th>
+            <th>Module</th>
+            <th>Intitule</th>
+            <th class="d-none d-md-table-cell">Groupe</th>
+            <th class="d-none d-lg-table-cell">Nom</th>
+            {% if is_ens %}
+            <th class="d-none d-lg-table-cell">Actions</th>
+            {% endif %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for document in object_list %}
+        <tr>
+            <td><a href="{{document.file.url}}">fichier</a></td>
+            <td>{{document.affectation_enseignant.module.code_scodoc}}</td>
+            <td>{{document.affectation_enseignant.module.intitule}}</td>
+            <td class="d-none d-md-table-cell">{{document.affectation_enseignant.groupe}} ({{document.affectation_enseignant.groupe.promotion}})</td>
+            <td class="d-none d-lg-table-cell">{{document.nom}}</td>
+            
+            {% if is_ens %}
+            <td class="d-none d-lg-table-cell">
+                <a href="/admin_ens/document4groupe/{{document.pk}}/update/" class="link_create_update btn btn-default btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <a href="/admin_ens/document4groupe/{{document.pk}}/delete/" class="link_delete btn btn-default btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

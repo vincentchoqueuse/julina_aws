@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% load bootstrap4 %}
+
+{% block title%}Etudiant {{object.nom}} {{object.prenom}} {% endblock %}
+
+{% block menu_etudiants %}active{% endblock %}
+
+{% block breadcrumb %}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+    <li class="breadcrumb-item active"><a href="{% url 'promotions_list' %}">Promotion</a></li>
+    <li class="breadcrumb-item active"><a href="{% url 'promotions_detail' pk=object.get_active_affectation.promotion.pk %}">{{object.get_active_affectation.promotion.nom}} </a></li>
+    <li class="breadcrumb-item active"><a href="{% url 'affectations_etudiant_detail' pk=object.get_active_affectation.pk %}">{{object.get_active_affectation}} </a></li>
+    <li class="breadcrumb-item active">Photo</li>
+</ol>
+{% endblock %}
+
+
+{% block content %}
+<h2>Changement photo</h2>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+    <label class="custom-file">
+        <input type="file" name="profile_image" id="id_profile_image" class="custom-file-input">
+        <span class="custom-file-control"></span>
+    </label>
+    </div>
+    <div style="padding-top:20px;">
+    <button type="submit" class="btn btn-secondary">
+        Submit
+    </button>
+    </div>
+</form>
+{% endblock %}
+
+

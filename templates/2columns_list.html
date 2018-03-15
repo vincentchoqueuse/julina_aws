@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% load generic %}
+
+{%block subtitle %}{{subtitle}}{% endblock %}
+
+
+{% block main_button %}
+{% if show_clipboard == True %}
+<a class="btn btn-default" href="#" id="clipboard"><i class="fa fa-clipboard" aria-hidden="true"></i> </a>
+{% endif%}
+
+{% if add == True %}
+<a class="btn btn-default" href="./create">Ajouter </a>
+{% endif %}
+{% endblock %}
+
+{%block sidebar %}
+{% include sidebar_menu_url %}
+{%endblock %}
+
+
+{%block content %}
+{{object_list|as_table:list_display}}
+{% endblock %}

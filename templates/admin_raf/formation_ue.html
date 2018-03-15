@@ -1,0 +1,11 @@
+{% extends "list.html" %}
+
+
+{% block header_button %}
+{% if can_create %}
+<div class="pull-right">
+    <a href="../ue/create/" class="link_create_update btn btn-default btn-sm" ><i class="fa fa-plus" aria-hidden="true"></i> Ajouter UE</a>
+    <a href="./create/" class="link_create_update btn btn-default btn-sm" ><i class="fa fa-plus" aria-hidden="true"></i> Ajouter Module</a>
+</div>
+{% endif %}
+{% endblock %}

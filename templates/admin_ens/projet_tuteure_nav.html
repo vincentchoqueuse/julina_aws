@@ -1,0 +1,5 @@
+<nav class="nav nav-tabs" >
+    <a class="nav-item nav-link {% if nav_active == 'detail' %}active{% endif %}" href="/admin_ens/projet_tuteure/{{projet_tuteure.pk}}/detail/" >Dashboard</a>
+    <a class="nav-item nav-link {% if nav_active == 'projet' %}active{% endif %}" href="/admin_ens/projet_tuteure/{{projet_tuteure.pk}}/projet/" >Projet</a>
+    <a class="nav-item nav-link {% if nav_active == 'consigne' %}active{% endif %}" href="/admin_ens/projet_tuteure/{{projet_tuteure.pk}}/consigne/" >Consigne</a>
+</nav>

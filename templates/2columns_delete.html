@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+
+{%block subtitle %}{{subtitle}}{% endblock %}
+
+
+
+{%block sidebar %}
+{% include sidebar_menu_url %}
+{%endblock %}
+
+{%block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    <p>Etes vous sur de vouloir supprimer l'objet {{object}} </p>
+    <p>La suppression de l'object impactera les objets suivants<p>
+    
+    <ul>
+        {% for child in object.get_related_object %}
+        <li>Objet {{child}} </li>
+        {% endfor %}
+    </ul>
+    
+    <input class="btn btn-danger" type="submit" value="Confirm"/>
+    <button onclick="window.history.back();" class="btn btn-default" type="button">Cancel</button>
+</form>
+{% endblock %}

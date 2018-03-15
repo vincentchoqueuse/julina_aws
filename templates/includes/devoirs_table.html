@@ -1,0 +1,27 @@
+<h2>Devoirs</h2>
+<table class="table mytable">
+    <thead>
+        <tr>
+            <th class="w-20">Module</th>
+            <th class="w-20">Nom</th>
+            <th class="w-20">Enseignant</th>
+            <th class="w-20">Deadline</th>
+            <th class="w-10">Envoyé</th>
+            <th class="w-10">Modification</th>
+            <th class="w-20">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for object in objects %}
+        <tr>
+            <td><a href="{% url 'modules_detail' pk=object.evaluation.module.pk%}">{{object.evaluation.module.code_scodoc}}</a></td>
+            <td>{{object.nom}}</td>
+            <td ><a href="{% url 'enseignants_detail' pk=object.evaluation.enseignant.pk %}">{{object.evaluation.enseignant.nom}} {{object.evaluation.enseignant.prenom}}</a></td>
+            <td>{{object.evaluation.deadline}}</td>
+            <td> <input type="checkbox" {% if object.changed %}checked="checked" {% endif %}disabled></td>
+            <td>{{object.evaluation.modification}}</td>
+            <td><a href="{% url 'devoirs_update' pk=object.pk%}" class="btn btn-secondary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>

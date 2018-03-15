@@ -1,0 +1,77 @@
+{% extends "detail.html" %}
+
+{% block detail_content %}
+<div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="card">
+            <div class="card-header">
+                Administratif
+                <div class="pull-right">
+                    <a href="/admin_adm/profil/update/" class="link_create_update btn btn-default btn-sm" ><i class="fa fa-pencil" aria-hidden="true"></i> Modification</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row" id="administratif_detail">
+                    <div class="col-sm-3">
+                        {% if object.photo %}
+                        <img class="img-fluid" style="padding: 10px;" src="{{MEDIA_URL}}{{object.photo.url}}" alt="Card image cap">
+                            {% else %}
+                            <i class="fa fa-user-circle fa-5x" aria-hidden="true"></i>
+                            {% endif %}
+                            
+                    </div>
+                    
+                    <div class="col-sm-9">
+                        <ul>
+                            <li>Nom/Prenom: {{object}}
+                            <li>Fonction: {{object.role}}</li>
+                            <li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:{{object.email}}"> {{object.email }}</a></li>
+                            <li><i class="fa fa-phone" aria-hidden="true"></i> {{object.telephone}}</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                Départements
+            </div>
+            <div class="card-body">
+                
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nom</th>
+                            <th>Reponsable</th>
+                            <th>Formations</th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {% for departement in request.user.administratif.departement_set.all %}
+                        <tr>
+                            <td><a class="link_detail" href="/formations/departement/{{departement.pk}}/detail/">{{departement.nom_short}}
+                            </td>
+                            <td>{{departement.nom}}</td>
+                            <td>{{departement.chef}}</td>
+                            <td>
+                                <ul>
+                                {% for formation in departement.formation_set.all %}
+                                    <li>{{formation.mention_short}}</li>
+                                {% endfor %}
+                                </ul>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}

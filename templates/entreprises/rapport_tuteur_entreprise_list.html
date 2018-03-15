@@ -1,0 +1,35 @@
+<table class="table">
+    <thead>
+        <tr >
+            <th>Nom</th>
+            <th class="d-none d-lg-table-cell">Tuteur</th>
+            <th>Entreprise</th>
+            <th class="d-none d-lg-table-cell">Deadline</th>
+            <th class="d-none d-lg-table-cell">Note</th>
+            {% if can_update %}
+            <th class="d-none d-lg-table-cell">Action</th>
+            {% endif %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for rapport_tuteur_entreprise in object_list %}
+        <tr>
+            <td><a class="link_detail" href="/entreprises/rapport_tuteur_entreprise/{{rapport_tuteur_entreprise.pk}}/detail/">{{rapport_tuteur_entreprise.nom}}
+                </td>
+            <td class="d-none d-lg-table-cell">{{rapport_tuteur_entreprise.contrat.tuteur_entreprise}}</td>
+            <td>{{rapport_tuteur_entreprise.contrat.entreprise}}</td>
+            <td class="d-none d-lg-table-cell">{{rapport_tuteur_entreprise.deadline}}</td>
+            <td class="d-none d-lg-table-cell">{{rapport_tuteur_entreprise.note}}</td>
+            {% if can_update %}
+            <td class="d-none d-lg-table-cell">
+                
+                <a href="./{{rapport_tuteur_entreprise.pk}}/update/" class='link_create_update btn btn-default btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a>
+                {% if can_delete %}
+                <a href="./{{rapport_tuteur_entreprise.pk}}/delete/" class='link_create_update btn btn-default btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a>
+                {% endif %}
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

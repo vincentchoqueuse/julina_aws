@@ -1,0 +1,36 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Detail</th>
+            <th>Date</th>
+            <th>Nombre d'heures</th>
+            <th>Remarques</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody >
+        {% for suivi in object_list %}
+        <tr>
+            <td><a href="/projets/suivi_projet/{{suivi.pk}}/detail/" class="link_detail">Suivi Projet</a></td>
+            <td>{{suivi.date|date}}</td>
+            <td>{{suivi.nombre_heures}}H</td>
+            <td>
+                {% if suivi.remarques %}
+                    <span class="badge badge-info">Vérifiée</span>
+                {% else %}
+                    <span class="badge badge-info">Suivi</span>
+                {% endif %}
+            </td>
+            <td>
+                {% if is_ens %}
+                    <a href="../suivi_projet/{{suivi.pk}}/update/" class="link_create_update btn btn-default btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                {% endif %}
+                {% if is_etu %}
+                    <a href="../suivi_projet/{{suivi.pk}}/update/" class="link_create_update btn btn-default btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a href="../suivi_projet/{{suivi.pk}}/delete/" class="link_delete btn btn-default btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

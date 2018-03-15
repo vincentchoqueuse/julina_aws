@@ -1,0 +1,69 @@
+{% load convert_markdown %}
+{% autoescape on %}
+
+\subsubsection*{ {{module.initule|convert_latex|safe}}}~\\
+\begin{tabular}{|p{0.5\linewidth}p{0.2\linewidth}p{0.2\linewidth}|}
+\hline
+\textbf{UE {{module.ue.numero}}:} {{module.ue.intitule|convert_latex|safe}}
+&\textbf{Obligatoire :} & {{module.obligatoire}} \\
+\textbf{Module :} {{module.initule}}
+&\textbf{Référence :} &  {{module.code_scodoc|convert_latex|safe}}({{module.code_apogee}}) \\
+\textbf{Positionnement :} 
+&\textbf{ECTS :} {{module.nb_ects}}&\textbf{Coef :} {{module.coefficient}}\\
+\textbf{Volume Horaire :} {{module.nb_heures}}H
+&\textbf{Cours:} {{module.nb_heures_cours}}H& \textbf{TD:} {{module.nb_heures_td}}H  \textbf{TP:} {{module.nb_heures_tp}}H \\
+\multicolumn{3}{|l|}{\begin{minipage}[b]{1\linewidth}\textbf{Enseignant(s) prévu(s) :}
+
+\end{minipage}}\\
+\hline\multicolumn{3}{|l|}{\textbf{Objectifs :} }\\
+\multicolumn{3}{|l|}{
+\parbox{0.9\textwidth}{
+
+{{module.objectif|convert_latex|safe}}
+
+} }\\
+\hline
+\multicolumn{3}{|l|}{\textbf{Competences :} }\\
+\multicolumn{3}{|l|}{
+\parbox{0.9\textwidth}{
+
+{{competences_minimales|convert_latex|safe}}
+
+} }\\
+\hline
+\multicolumn{3}{|l|}{\textbf{Pre-requis :} }\\
+\multicolumn{3}{|l|}{
+\parbox{0.9\textwidth}{
+
+{{module.pre_requis|convert_latex|safe}}
+
+} }\\
+\hline
+\multicolumn{3}{|l|}{\textbf{Contenus :} }\\
+\multicolumn{3}{|l|}{
+\parbox{0.9\textwidth}{
+
+{{module.contenu|convert_latex|safe}}
+
+} }\\
+\hline
+\multicolumn{3}{|l|}{\textbf{Modalites :} }\\
+\multicolumn{3}{|l|}{
+\parbox{0.9\textwidth}{
+
+{{module.modalites|convert_latex|safe}}
+
+} }\\
+
+\hline
+
+\multicolumn{3}{|l|}{\textbf{Evaluations:} }\\
+\multicolumn{3}{|l|}{
+\parbox{0.9\textwidth}{
+
+} }\\
+\hline
+
+\end{tabular}
+{% endautoescape %}
+

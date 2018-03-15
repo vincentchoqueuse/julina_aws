@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% load generic %}
+{% load bootstrap4 %}
+
+{% block sidebar %}
+{% include sidebar_template %}
+{% endblock %}
+
+{% block breadcrumb %}
+{% include breadcrumb_template %}
+{% endblock %}
+
+{%block javascript_ready%}
+$("body").on("click", ".link_export", function (event) {
+    url=$(this).attr("href");
+    $.ajax({type: "GET",url: url,success : function(response){
+        if (!$("#modal3").hasClass("show"))
+        {
+        $("#modal3").modal();
+        }
+        $("#modal3_content").html(response["content"]);
+        $("#modal3_form").attr("action",url);
+        $("select:not([multiple])").addClass("custom-select");
+        $("select[multiple=multiple]").prop("size",10);
+        }
+    });
+    event.preventDefault();
+});
+$("#modal3_button").on("click",function(){$("#modal3").modal('toggle');});
+{%endblock%}
+
+
+{%block content %}
+{% include nav_template %}
+<div class="tab-content" >
+    <div class="card">
+        <div class="card-header">{{title}} ({% if is_paginated %}{{paginator.count}}{% else %}{{object_list|length}}{% endif %} résultats)
+            
+            <div class="pull-right">
+                {% block header_button %}
+                {% if can_create %}
+                <a href="./create/" class="link_create_update btn btn-default btn-sm" ><i class="fa fa-plus" aria-hidden="true"></i> Ajouter</a>
+                {% endif %}
+                {% if can_filter %}
+                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal2"><i class="fa fa-filter" aria-hidden="true"></i> Filtre </button>
+                {% endif %}
+                {% if can_export %}
+                <a href="./export/" class="link_export btn btn-default btn-sm" ><i class="fa fa-file-excel-o" aria-hidden="true"></i> Export </a>
+                {% endif %}
+                {% endblock %}
+            </div>
+            
+        </div>
+        
+        <div class="card-body">
+            {% include list_template %}
+            {% if is_paginated %}
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?{% query_transform request page_obj.previous_page_number %}">&laquo;</a></li>
+                    {% else %}
+                    <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                    {% endif %}
+                    {% for i in paginator.page_range %}
+                    {% if page_obj.number == i %}
+                    <li class="page-item active"><span class="page-link">{{ i }} <span class="sr-only">(current)</span></span></li>
+                    {% else %}
+                    <li><a class="page-link" href="?{% query_transform request i %}">{{ i }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link" href="?{% query_transform request page_obj.next_page_number %}">&raquo;</a></li>
+                    {% else %}
+                    <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block modal %}
+{{ block.super }}
+{% if can_filter %}
+<div id="modal2" class="modal fade" style="overflow: scroll;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" >
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal_title">Filtrage des Résultats</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="" method="get">
+                <div class="modal-body" id="modal_content">
+                    {% bootstrap_form form %}
+                </div>
+                <div class="modal-footer">
+                    <a href="{{request.path}}" class="btn btn-default" >Supprimer Filtre</a>
+                    <button type="submit" class="btn btn-primary" >Filtrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% if can_export %}
+<div id="modal3" class="modal fade" style="overflow: scroll;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" >
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal_title">Export des resultats</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="modal3_form" action="" method="post" enctype="multipart/form-data">
+                <div class="modal-body" id="modal3_content"></div>
+                <div class="modal-footer">
+                    <button id="modal3_button" type="submit" class="btn btn-primary" >Exporter</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

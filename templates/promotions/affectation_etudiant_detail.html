@@ -1,0 +1,82 @@
+<div class="row">
+    <div class="col-sm-3">
+        {% if object.etudiant.photo %}
+        <img class="img-fluid" style="padding: 10px;" src="{{MEDIA_URL}}{{object.etudiant.photo.url}}" alt="Card image cap">
+            {% else %}
+            <i class="fa fa-user-circle fa-5x" aria-hidden="true"></i>
+            {% endif %}
+            
+            </div>
+    
+    <div class="col-sm-9">
+        <ul>
+            <li>Nom/Prenom: {{object.etudiant}}
+            <li>Date de Naissance: {{object.etudiant.date_naissance}} </li>
+            <li><i class="fa fa fa-home" aria-hidden="true"></i> {{object.etudiant.domicile}}, {{object.etudiant.villedomicile}}, {{object.etudiant.codepostaldomicile}}</li>
+            <li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:{{object.affectation.etudiant.email_perso }}"> {{object.etudiant.email_perso }}</a></li>
+            <li><i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:{{object.etudiant.telephonemobile}}">{{object.etudiant.telephonemobile}}</a></li>
+            <li>Bac+2: {{object.etudiant.bac2}} ({{object.etudiant.annee_bac2}})</li>
+            <li>Bac: {{object.etudiant.bac}} ({{object.etudiant.annee_bac}})</li>
+        </ul>
+        
+    </div>
+</div>
+
+<h5>Groupes</h5>
+<dl class="row">
+    <dt class="col-sm-2">Affectations</dt>
+    <dd class="col-sm-10">{{object.groupe_set|join:", "}}</dd>
+</dl>
+    
+<h5>Experiences Professionnelles</h5>
+
+{% for affectation in object.etudiant.affectation_set.all %}
+    {% for contrat in affectation.contrat_set.all %}
+    <dl class="row">
+        <dt class="col-sm-2">{{affectation.promotion.annee}}</dt>
+        <dd class="col-sm-10">
+            <p>Entreprise {{contrat.entreprise}} (Tuteur Entreprise: <a href="mailto: {{contrat.tuteur_entreprise.email}}">{{contrat.tuteur_entreprise}}</a>,Tuteur IUT: <a href="mailto:{{contrat.tuteur_formation.email}}">{{contrat.tuteur_formation}}</a>) </p>
+            
+            <p>Programme: {{contrat.fiche_liaison.programme}}</p>
+        </dd>
+    </dl>
+    {% endfor %}
+{% endfor %}
+
+<h5>Bulletin</h5>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th >Code</th>
+            <th >Intitule</th>
+            <th >{{object.bulletin.moyenne}}/20</th>
+        </tr>
+    </thead>
+    {% for ue in object.parcours.ues.all %}
+    <tr>
+        <th>UE {{ue.numero}} </th>
+        <th>{{ue.intitule}} </th>
+        <th></th>
+    </tr>
+    {% for module in ue.module_set.all %}
+    <tr>
+        <td>
+            {% if show_link %}
+            <a href="/formations/module/{{module.pk}}/detail/" class="link_detail">{{module.code_scodoc}} </a>
+            {% else %}
+            {{module.code_scodoc}}
+            {%endif %}
+        </td>
+        <td>{{module.intitule}} </td>
+        <td>
+            {% for note in object.bulletin.note_set.all%}
+            {% if note.module.pk == module.pk %}{{note.moyenne}}{%endif %}
+            {% endfor %}
+        </td>
+    </tr>
+    {% endfor %}
+    {% endfor %}
+    </tbody>
+</table>
+

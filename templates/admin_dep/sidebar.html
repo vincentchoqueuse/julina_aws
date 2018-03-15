@@ -1,0 +1,17 @@
+<div class="nav flex-column nav-pills">
+    
+    <div class="nav-title">Département {{departement}}</div>
+    
+    <a href="{% url 'admin_dep_departement_detail' pk=departement.pk %}" class="nav-link {% if object == departement %}active{% endif %}"><i class="caret-left fa fa-cog"></i> Profil</a></li>
+    
+    <div class="nav-title">Formation</div>
+    
+    {% for formation in departement.formation_set.all %}
+    
+        {% for promotion in formation.promotion_set.all %}
+        <a href="/admin_dep/promotion/{{promotion.pk}}/" class="nav-link {% if '/promotion/{{promotion.pk}}/' in request.path %}active{% endif %} {% if not promotion.active %}hidden{%endif%}"><i class="fa fa-users" aria-hidden="true"></i> {{promotion}}</a>
+        {% endfor %}
+    {% endfor %}
+
+    
+</div>

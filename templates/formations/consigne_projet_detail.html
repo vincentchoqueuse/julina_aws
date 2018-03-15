@@ -1,0 +1,12 @@
+{% load generic %}
+
+{{object.consigne_projet|as_markdown}}
+
+{% if object.grille_projet %}
+<h5>Fichier</h5>
+<ul>
+    <li>
+        <a href="{{object.grille_projet.file.url}}">{{object.grille_projet.file}}</a>
+    </li>
+</ul>
+{% endif %}

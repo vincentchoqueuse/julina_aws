@@ -1,0 +1,17 @@
+{% extends "detail.html" %}
+
+{% block detail_content %}
+<div class="tab-content" id="nav-tabContent">
+    <div class="card">
+        <div class="card-header">Bulletin
+            <div class="pull-right">
+                <a id="bulletin_link" href="/admin_etu/affectation_etudiant/{{object.pk}}/update/" class="link_create_update btn btn-default btn-sm" ><i class="fa fa-{% if object.bulletin_visible%}un{% endif %}lock" aria-hidden="true"></i> </a>
+            </div>
+        </div>
+        <div class="card-body">
+            {% include 'promotions/bulletin_detail.html' with object=object.bulletin%}
+        </div>
+    </div>
+</div>
+{% endblock %}
+

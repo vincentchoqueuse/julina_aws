@@ -1,0 +1,39 @@
+<table class="table">
+    <thead>
+        <tr >
+            <th>Code</th>
+            <th>Groupes</th>
+            <th>Nb Etudiants</th>
+            <th class="d-none d-lg-table-cell">Statut</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for promotion in object_list %}
+        <tr>
+            <td>
+                {% if base_url %}
+                <a href="/{{base_url}}/promotion/{{promotion.pk}}/detail/">{{promotion}}</a>
+                {% else %}
+                <a class="link_detail" href="/promotions/promotion/{{promotion.pk}}/detail/">{{promotion}}</a>
+                {% endif %}
+            </td>
+            
+            <td>{{promotion.groupe_set.all|join:", "}}</td>
+            <td>{{promotion.etudiants.all|length}}</td>
+            <td class="d-none d-lg-table-cell">
+            {% if promotion.active %}
+                <span class="badge badge-info">Actif</span></td>
+            {% else %}
+                <span class="badge badge-danger">Inactif</span></td>
+            {% endif %}
+            </td>
+            <td class="d-none d-lg-table-cell">
+                <a href="./{{promotion.pk}}/update/" class='link_create_update btn btn-default btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a>
+                <a href="./{{promotion.pk}}/delete/" class='link_delete btn btn-default btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a></td>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+

@@ -1,0 +1,27 @@
+{% extends "list.html" %}
+{% load bootstrap4 %}
+
+{%block javascript%}
+<script>
+    {% include 'entreprises/entreprise_list_map.js' %}
+    $(function() {initialize();});
+</script>
+{%endblock%}
+
+
+{% block content %}
+{% include nav_template %}
+<div class="tab-content" id="nav-tabContent">
+    <div class="card">
+        <div class="card-header">Localisation des entreprises ({{object_list.count}} résultats)
+            <div class="pull-right">
+                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal2"><i class="fa fa-filter" aria-hidden="true"></i> Filtre </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div id="map-canvas" style="height:500px"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,35 @@
+<dl class='row'>
+    <dt class='col-sm-3'>Nom Short</dt>
+    <dd class='col-sm-9'>{{object.mention_short}}</dd>
+</dl>
+
+<dl class='row'>
+    <dt class='col-sm-3'>Mention</dt>
+    <dd class='col-sm-9'>{{object.mention}}</dd>
+</dl>
+
+<dl class='row'>
+    <dt class='col-sm-3'>Responsable</dt>
+    <dd class='col-sm-9'>{{object.responsable}}</dd>
+</dl>
+
+<h3>Liste des Parcours </h3>
+
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Numero</th>
+            <th>Intitule</th>
+            <th>Coefficient</th>
+            <th>Nb Heures</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for parcours in object.parcours_set.all %}
+        <tr >
+            <td>{{parcours.nom}}</td>
+            <td></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

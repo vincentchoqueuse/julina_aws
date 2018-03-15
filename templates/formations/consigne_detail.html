@@ -1,0 +1,12 @@
+{% load generic %}
+
+{{object|as_markdown}}
+
+{% if file %}
+<h5>Fichier</h5>
+<ul>
+    <li>
+        <a href="{{file.url}}">{{file}}</a>
+    </li>
+</ul>
+{% endif %}

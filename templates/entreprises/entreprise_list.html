@@ -1,0 +1,34 @@
+{% load generic %}
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th >Nom</th>
+            <th >Activite</th>
+            <th >Adresse</th>
+            <th> Nb contrats</th>
+            <th> Dernier contrat</th>
+            <th >Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entreprise in object_list %}
+        <tr>
+            <td><a href="/entreprises/entreprise/{{entreprise.pk}}/detail/" class='link_detail'>{{ entreprise.nom|truncatechars:20 }}</a></td>
+            <td>{{ entreprise.activite|truncatechars:50}}</td>
+            <td>{{ entreprise.adresse_zip}}</td>
+            <td>{{ entreprise.nb_contrats}}</td>
+            <td>{{ entreprise.last_contrat}}</td>
+            <td>
+                <a href="./{{entreprise.pk}}/update/" class='link_create_update btn btn-default btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a>
+                <a href="./{{entreprise.pk}}/delete/" class='link_delete btn btn-default btn-sm'><i class='fa fa-trash' aria-hidden='true'></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+
+

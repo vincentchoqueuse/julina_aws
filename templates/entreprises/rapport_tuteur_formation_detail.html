@@ -1,0 +1,27 @@
+{% load generic %}
+
+<div class="date_modification">{{object.date_visite}}</div>
+
+<div class="container">
+    <dl class='row'>
+        <dt class='col-sm-3'>Condition de Travail</dt>
+        <dd class='col-sm-9'>{{object.condition_travail|as_progress_bar}}</dd>
+    </dl>
+    <dl class='row'>
+        <dt class='col-sm-3'>Integration</dt>
+        <dd class='col-sm-9'>{{object.integration|as_progress_bar}}</dd>
+    </dl>
+    <dl class='row'>
+        <dt class='col-sm-3'>Activite</dt>
+        <dd class='col-sm-9'>{{object.activite|as_markdown}}</dd>
+    </dl>
+    <dl class='row'>
+        <dt class='col-sm-3'>Visite</dt>
+        <dd class='col-sm-9'>{{object.visite}}</dd>
+    </dl>
+    <dl class='row'>
+        <dt class='col-sm-3'>Commentaires</dt>
+        <dd class='col-sm-9'>{{object.commentaires|as_markdown}}</dd>
+    </dl>
+    
+</div>
